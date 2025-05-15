@@ -55,7 +55,10 @@ public class UsuarioController : ControllerBase
         {
             var usuario = new Usuario()
             {
-                Nome = input.Nome
+                Nome = input.Nome,
+                Email = input.Email,
+                Password = input.Password,
+                Profile = false,
             };
 
             _usuarioRepository.Cadastar(usuario);
