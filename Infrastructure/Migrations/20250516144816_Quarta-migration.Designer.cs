@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250515001445_Quarta-migration")]
+    [Migration("20250516144816_Quarta-migration")]
     partial class Quartamigration
     {
         /// <inheritdoc />

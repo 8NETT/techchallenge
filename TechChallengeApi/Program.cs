@@ -12,12 +12,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-{
-    options.UseSqlServer(connectionString);
-}, ServiceLifetime.Scoped);
+builder.Services.AddDbContext<ApplicationDbContext>(options => { options.UseSqlServer(connectionString); },
+    ServiceLifetime.Scoped);
 
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<IJogoRepository, JogoRepository>();
+
 
 var app = builder.Build();
 

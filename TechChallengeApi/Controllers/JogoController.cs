@@ -7,21 +7,22 @@ namespace TechChallenge.Controllers;
 
 [ApiController]
 [Route("/[controller]")]
-public class UsuarioController : ControllerBase
+public class JogoController : ControllerBase
 {
-    private readonly IUsuarioRepository _usuarioRepository;
+    private readonly IJogoRepository _jogoRepository;
 
-    public UsuarioController(IUsuarioRepository usuarioRepository)
+    public JogoController(IJogoRepository jogoRepository)
     {
-        _usuarioRepository = usuarioRepository;
+        _jogoRepository = jogoRepository;
     }
+
 
     [HttpGet]
     public IActionResult Get()
     {
         try
         {
-            return Ok(_usuarioRepository.ObterTodos());
+            return Ok(_jogoRepository.ObterTodos());
         }
         catch (Exception e)
         {
@@ -37,7 +38,7 @@ public class UsuarioController : ControllerBase
     {
         try
         {
-            return Ok(_usuarioRepository.ObterPorId(id));
+            return Ok(_jogoRepository.ObterPorId(id));
         }
         catch (Exception e)
         {
@@ -49,19 +50,19 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult Post([FromBody] UsuarioInput input)
+    public IActionResult Post([FromBody] JogoInput input)
     {
         try
         {
-            var usuario = new Usuario()
+            //Todo: implmentar validacao de perfil admin
+            var jogo = new Jogo()
             {
                 Nome = input.Nome,
-                Email = input.Email,
-                Password = input.Password,
-                Profile = false,
+                Valor = input.Valor,
+                Desconto = input.Desconto,
             };
 
-            _usuarioRepository.Cadastar(usuario);
+            _jogoRepository.Cadastar(jogo);
 
             return Ok();
         }
@@ -73,19 +74,20 @@ public class UsuarioController : ControllerBase
             });
         }
     }
-
+    
     [HttpPut("{id}")]
-    public IActionResult Put([FromRoute] int id, [FromBody] UsuarioInput input)
+    public IActionResult Put([FromRoute] int id, [FromBody] JogoInput input)
     {
         try
         {
-            var usuario = _usuarioRepository.ObterPorId(id);
+            //Todo: implmentar validacao de perfil admin
+            var jogo = _jogoRepository.ObterPorId(id);
 
-            usuario.Nome = input.Nome;
-            usuario.Email = input.Email;
-            usuario.Password = input.Password;
+            jogo.Nome = input.Nome;
+            jogo.Valor = input.Valor;
+            jogo.Desconto = input.Desconto;
 
-            _usuarioRepository.Alterar(usuario);
+            _jogoRepository.Alterar(jogo);
 
             return Ok();
         }
@@ -97,13 +99,13 @@ public class UsuarioController : ControllerBase
             });
         }
     }
-
     [HttpDelete("{id}")]
     public IActionResult Delete([FromRoute] int id)
     {
         try
         {
-            _usuarioRepository.Deletar(id);
+            //Todo: implmentar validacao de perfil admin
+            _jogoRepository.Deletar(id);
             return Ok();
         }
         catch (Exception e)

@@ -8,7 +8,7 @@ public class JogoConfiguration : IEntityTypeConfiguration<Jogo>
 {
     public void Configure(EntityTypeBuilder<Jogo> builder)
     {
-        builder.ToTable("Usuario");
+        builder.ToTable("Jogo");
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).HasColumnType("INT").UseIdentityColumn();
         builder.Property(x => x.DataCriacao).HasColumnType("DATETIME").IsRequired();
