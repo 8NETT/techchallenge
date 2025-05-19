@@ -21,6 +21,7 @@ public class UsuarioController : ControllerBase
     {
         try
         {
+            // throw new Exception("Erro ao obter usuários"); // Simulando um erro para teste
             return Ok(_usuarioRepository.ObterTodos());
         }
         catch (Exception e)
