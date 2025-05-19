@@ -13,5 +13,9 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
         builder.Property(x => x.Id).HasColumnType("INT").UseIdentityColumn();
         builder.Property(x => x.DataCriacao).HasColumnType("DATETIME").IsRequired();
         builder.Property(x => x.Nome).HasColumnType("VARCHAR(100)").IsRequired();
+        builder.Property(x => x.Email).HasColumnType("VARCHAR(100)").IsRequired();
+        builder.Property(x => x.Password).HasColumnType("VARCHAR(100)").IsRequired();
+        builder.Property(x => x.Profile).HasColumnType("BIT").IsRequired();
+        builder.HasMany(x => x.Jogos).WithMany(x => x.Usuarios);
     }
 }

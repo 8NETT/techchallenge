@@ -15,6 +15,7 @@
 /Users/emersoncoutinho/Desktop/Pos-graduacao/TechChallenge/Infrastructure/obj/Debug/net8.0/Infrastructure.pdb
 /Users/emersoncoutinho/Desktop/Pos-graduacao/TechChallenge/Infrastructure/obj/Debug/net8.0/Infrastructure.genruntimeconfig.cache
 /Users/emersoncoutinho/Desktop/Pos-graduacao/TechChallenge/Infrastructure/obj/Debug/net8.0/ref/Infrastructure.dll
+<<<<<<< HEAD
 C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json
 C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\Infrastructure\bin\Debug\net8.0\Infrastructure.runtimeconfig.json
 C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\Infrastructure\bin\Debug\net8.0\Infrastructure.dll
@@ -33,3 +34,6 @@ C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\Infrastructure\o
 C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\Infrastructure\obj\Debug\net8.0\Infrastructure.genruntimeconfig.cache
 C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+=======
+/Users/emersoncoutinho/Desktop/Pos-graduacao/TechChallenge/Infrastructure/obj/Debug/net8.0/Infrastructure.sourcelink.json
+>>>>>>> 265905d623903b2640146625c4d48ba3c96458a7

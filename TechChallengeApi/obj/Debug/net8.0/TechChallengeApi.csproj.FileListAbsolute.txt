@@ -139,6 +139,7 @@
 /Users/emersoncoutinho/Desktop/Pos-graduacao/TechChallenge/TechChallengeApi/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll
 /Users/emersoncoutinho/Desktop/Pos-graduacao/TechChallenge/TechChallengeApi/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll
 /Users/emersoncoutinho/Desktop/Pos-graduacao/TechChallenge/TechChallengeApi/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll
+<<<<<<< HEAD
 C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\TechChallengeApi\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\TechChallengeApi\bin\Debug\net8.0\appsettings.json
 C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\TechChallengeApi\bin\Debug\net8.0\TechChallengeApi.exe
@@ -306,3 +307,6 @@ C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\TechChallengeApi
 C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\TechChallengeApi\bin\Debug\net8.0\System.Text.Encodings.Web.dll
 C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\TechChallengeApi\bin\Debug\net8.0\System.Text.Json.dll
 C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\TechChallengeApi\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+=======
+/Users/emersoncoutinho/Desktop/Pos-graduacao/TechChallenge/TechChallengeApi/obj/Debug/net8.0/TechChallengeApi.sourcelink.json
+>>>>>>> 265905d623903b2640146625c4d48ba3c96458a7

@@ -24,6 +24,7 @@ public class ApplicationDbContext : DbContext
     }
     
     public DbSet<Usuario> Usuario { get; set; }
+    public DbSet<Jogo> Jogo { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
