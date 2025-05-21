@@ -1,0 +1,53 @@
+2025-05-21 00:18:50.350 -03:00 [INF] Now listening on: https://localhost:7241
+2025-05-21 00:18:50.749 -03:00 [INF] Now listening on: http://localhost:5090
+2025-05-21 00:18:51.423 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-21 00:18:51.656 -03:00 [INF] Hosting environment: Development
+2025-05-21 00:18:51.659 -03:00 [INF] Content root path: C:\GitHub\techchallenge\TechChallengeApi
+2025-05-21 00:18:54.008 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/index.html - null null
+2025-05-21 00:18:55.256 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/index.html - 200 null text/html;charset=utf-8 1291.3923ms
+2025-05-21 00:18:55.793 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-21 00:18:55.826 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/_framework/aspnetcore-browser-refresh.js - 200 13768 application/javascript; charset=utf-8 32.5127ms
+2025-05-21 00:18:56.485 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/_vs/browserLink - null null
+2025-05-21 00:18:56.683 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/_vs/browserLink - 200 null text/javascript; charset=UTF-8 198.6059ms
+2025-05-21 00:19:00.669 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - null null
+2025-05-21 00:19:00.716 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 46.9801ms
+2025-05-21 00:19:16.970 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/Usuario - null null
+2025-05-21 00:19:16.988 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.Get (TechChallengeApi)'
+2025-05-21 00:19:17.106 -03:00 [INF] Route matched with {action = "Get", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:19:19.779 -03:00 [WRN] No store type was specified for the decimal property 'Valor' on entity type 'Jogo'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 00:19:22.195 -03:00 [INF] Executed DbCommand (519ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DataCriacao], [u].[Email], [u].[Nome], [u].[Password], [u].[Profile]
+FROM [Usuario] AS [u]
+2025-05-21 00:19:22.465 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Core.Entity.Usuario, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-21 00:19:22.507 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.Get (TechChallengeApi) in 5360.9949ms
+2025-05-21 00:19:22.514 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.Get (TechChallengeApi)'
+2025-05-21 00:19:22.542 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/Usuario - 200 null application/json; charset=utf-8 5571.9009ms
+2025-05-21 00:21:11.418 -03:00 [INF] Now listening on: https://localhost:7241
+2025-05-21 00:21:11.592 -03:00 [INF] Now listening on: http://localhost:5090
+2025-05-21 00:21:13.107 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-21 00:21:13.194 -03:00 [INF] Hosting environment: Development
+2025-05-21 00:21:13.197 -03:00 [INF] Content root path: C:\GitHub\techchallenge\TechChallengeApi
+2025-05-21 00:21:13.315 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/index.html - null null
+2025-05-21 00:21:14.395 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-21 00:21:14.399 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/index.html - 200 null text/html;charset=utf-8 1105.5535ms
+2025-05-21 00:21:14.492 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/_vs/browserLink - null null
+2025-05-21 00:21:14.759 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/_framework/aspnetcore-browser-refresh.js - 200 13768 application/javascript; charset=utf-8 364.505ms
+2025-05-21 00:21:15.120 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/_vs/browserLink - 200 null text/javascript; charset=UTF-8 628.4698ms
+2025-05-21 00:21:15.373 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - null null
+2025-05-21 00:21:15.451 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 77.4633ms
+2025-05-21 00:21:25.165 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/Usuario/jogos/1 - null null
+2025-05-21 00:21:25.195 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.ListarJogosDoUsuario (TechChallengeApi)'
+2025-05-21 00:21:25.296 -03:00 [INF] Route matched with {action = "ListarJogosDoUsuario", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ListarJogosDoUsuario(Int32) on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:21:28.078 -03:00 [WRN] No store type was specified for the decimal property 'Valor' on entity type 'Jogo'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 00:21:30.818 -03:00 [INF] Executed DbCommand (162ms) [Parameters=[@__usuarioId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [j].[Id], [j].[DataCriacao], [j].[Desconto], [j].[Nome], [j].[Valor]
+FROM [Jogo] AS [j]
+WHERE EXISTS (
+    SELECT 1
+    FROM [JogoUsuario] AS [j0]
+    INNER JOIN [Usuario] AS [u] ON [j0].[UsuariosId] = [u].[Id]
+    WHERE [j].[Id] = [j0].[JogosId] AND [u].[Id] = @__usuarioId_0)
+2025-05-21 00:21:31.035 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Core.Entity.Jogo, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-21 00:21:31.081 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.ListarJogosDoUsuario (TechChallengeApi) in 5770.1681ms
+2025-05-21 00:21:31.085 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.ListarJogosDoUsuario (TechChallengeApi)'
+2025-05-21 00:21:31.111 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/Usuario/jogos/1 - 200 null application/json; charset=utf-8 5947.8526ms

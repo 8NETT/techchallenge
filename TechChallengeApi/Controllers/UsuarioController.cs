@@ -115,4 +115,17 @@ public class UsuarioController : ControllerBase
             });
         }
     }
+
+    [HttpGet("jogos/{usuarioId}")]
+    public IActionResult ListarJogosDoUsuario([FromRoute] int usuarioId)
+    {
+        try
+        {
+            return Ok(_usuarioRepository.ObterJogosPorUsuario(usuarioId));
+        }
+        catch (Exception e)
+        {
+            return BadRequest(new { error = e.Message });
+        }
+    }
 }
