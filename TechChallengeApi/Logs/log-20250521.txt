@@ -51,3 +51,432 @@ WHERE EXISTS (
 2025-05-21 00:21:31.081 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.ListarJogosDoUsuario (TechChallengeApi) in 5770.1681ms
 2025-05-21 00:21:31.085 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.ListarJogosDoUsuario (TechChallengeApi)'
 2025-05-21 00:21:31.111 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/Usuario/jogos/1 - 200 null application/json; charset=utf-8 5947.8526ms
+2025-05-21 00:29:25.056 -03:00 [INF] Now listening on: https://localhost:7241
+2025-05-21 00:29:25.133 -03:00 [INF] Now listening on: http://localhost:5090
+2025-05-21 00:29:25.361 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-21 00:29:25.364 -03:00 [INF] Hosting environment: Development
+2025-05-21 00:29:25.367 -03:00 [INF] Content root path: C:\GitHub\techchallenge\TechChallengeApi
+2025-05-21 00:29:27.879 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/index.html - null null
+2025-05-21 00:29:28.865 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/_vs/browserLink - null null
+2025-05-21 00:29:28.888 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/index.html - 200 null text/html;charset=utf-8 1029.9996ms
+2025-05-21 00:29:28.906 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-21 00:29:29.532 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/_vs/browserLink - 200 null text/javascript; charset=UTF-8 666.813ms
+2025-05-21 00:29:29.533 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/_framework/aspnetcore-browser-refresh.js - 200 13768 application/javascript; charset=utf-8 641.6365ms
+2025-05-21 00:29:30.081 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - null null
+2025-05-21 00:29:30.152 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 71.6941ms
+2025-05-21 00:29:45.440 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/Usuario - null null
+2025-05-21 00:29:45.459 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.Get (TechChallengeApi)'
+2025-05-21 00:29:45.523 -03:00 [INF] Route matched with {action = "Get", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:29:47.485 -03:00 [WRN] No store type was specified for the decimal property 'Valor' on entity type 'Jogo'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 00:29:49.822 -03:00 [INF] Executed DbCommand (54ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DataCriacao], [u].[Email], [u].[Nome], [u].[Password], [u].[Profile]
+FROM [Usuario] AS [u]
+2025-05-21 00:29:50.103 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Core.Entity.Usuario, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-21 00:29:50.168 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.Get (TechChallengeApi) in 4631.786ms
+2025-05-21 00:29:50.172 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.Get (TechChallengeApi)'
+2025-05-21 00:29:50.210 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/Usuario - 200 null application/json; charset=utf-8 4770.1542ms
+2025-05-21 00:30:04.214 -03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7241/Usuario/1 - null null
+2025-05-21 00:30:04.274 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.Delete (TechChallengeApi)'
+2025-05-21 00:30:04.312 -03:00 [INF] Route matched with {action = "Delete", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Delete(Int32) on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:30:05.016 -03:00 [INF] Executed DbCommand (50ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DataCriacao], [u].[Email], [u].[Nome], [u].[Password], [u].[Profile]
+FROM [Usuario] AS [u]
+WHERE [u].[Id] = @__id_0
+2025-05-21 00:30:05.583 -03:00 [INF] Executed DbCommand (319ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [Usuario]
+OUTPUT 1
+WHERE [Id] = @p0;
+2025-05-21 00:30:05.645 -03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2025-05-21 00:30:05.648 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.Delete (TechChallengeApi) in 1330.177ms
+2025-05-21 00:30:05.651 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.Delete (TechChallengeApi)'
+2025-05-21 00:30:05.654 -03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7241/Usuario/1 - 200 0 null 1440.1459ms
+2025-05-21 00:30:56.197 -03:00 [INF] Request starting HTTP/2 POST https://localhost:7241/Usuario - application/json 96
+2025-05-21 00:30:56.209 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.Post (TechChallengeApi)'
+2025-05-21 00:30:56.218 -03:00 [INF] Route matched with {action = "Post", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Post(Core.Input.UsuarioInput) on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:30:56.651 -03:00 [INF] Executed DbCommand (81ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Usuario] ([DataCriacao], [Email], [Nome], [Password], [Profile])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2025-05-21 00:30:56.702 -03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2025-05-21 00:30:56.716 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.Post (TechChallengeApi) in 488.7393ms
+2025-05-21 00:30:56.724 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.Post (TechChallengeApi)'
+2025-05-21 00:30:56.728 -03:00 [INF] Request finished HTTP/2 POST https://localhost:7241/Usuario - 200 0 null 530.5311ms
+2025-05-21 00:31:08.389 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/Usuario/3 - null null
+2025-05-21 00:31:08.400 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.Get (TechChallengeApi)'
+2025-05-21 00:31:08.417 -03:00 [INF] Route matched with {action = "Get", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get(Int32) on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:31:08.495 -03:00 [INF] Executed DbCommand (42ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DataCriacao], [u].[Email], [u].[Nome], [u].[Password], [u].[Profile]
+FROM [Usuario] AS [u]
+WHERE [u].[Id] = @__id_0
+2025-05-21 00:31:08.501 -03:00 [INF] Executing OkObjectResult, writing value of type 'null'.
+2025-05-21 00:31:08.505 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.Get (TechChallengeApi) in 70.6306ms
+2025-05-21 00:31:08.507 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.Get (TechChallengeApi)'
+2025-05-21 00:31:08.510 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/Usuario/3 - 204 null null 122.1796ms
+2025-05-21 00:31:15.643 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/Usuario - null null
+2025-05-21 00:31:15.656 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.Get (TechChallengeApi)'
+2025-05-21 00:31:15.661 -03:00 [INF] Route matched with {action = "Get", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:31:15.671 -03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[DataCriacao], [u].[Email], [u].[Nome], [u].[Password], [u].[Profile]
+FROM [Usuario] AS [u]
+2025-05-21 00:31:15.676 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Core.Entity.Usuario, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-21 00:31:15.679 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.Get (TechChallengeApi) in 14.3209ms
+2025-05-21 00:31:15.683 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.Get (TechChallengeApi)'
+2025-05-21 00:31:15.689 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/Usuario - 200 null application/json; charset=utf-8 45.4754ms
+2025-05-21 00:31:20.843 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/Usuario/2 - null null
+2025-05-21 00:31:20.899 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.Get (TechChallengeApi)'
+2025-05-21 00:31:20.908 -03:00 [INF] Route matched with {action = "Get", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get(Int32) on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:31:20.924 -03:00 [INF] Executed DbCommand (8ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DataCriacao], [u].[Email], [u].[Nome], [u].[Password], [u].[Profile]
+FROM [Usuario] AS [u]
+WHERE [u].[Id] = @__id_0
+2025-05-21 00:31:20.933 -03:00 [INF] Executing OkObjectResult, writing value of type 'Core.Entity.Usuario'.
+2025-05-21 00:31:20.940 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.Get (TechChallengeApi) in 26.3672ms
+2025-05-21 00:31:20.944 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.Get (TechChallengeApi)'
+2025-05-21 00:31:20.946 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/Usuario/2 - 200 null application/json; charset=utf-8 103.3881ms
+2025-05-21 00:31:54.735 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/Usuario/jogos/2 - null null
+2025-05-21 00:31:54.743 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.ListarJogosDoUsuario (TechChallengeApi)'
+2025-05-21 00:31:54.752 -03:00 [INF] Route matched with {action = "ListarJogosDoUsuario", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ListarJogosDoUsuario(Int32) on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:31:55.055 -03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__usuarioId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [j].[Id], [j].[DataCriacao], [j].[Desconto], [j].[Nome], [j].[Valor]
+FROM [Jogo] AS [j]
+WHERE EXISTS (
+    SELECT 1
+    FROM [JogoUsuario] AS [j0]
+    INNER JOIN [Usuario] AS [u] ON [j0].[UsuariosId] = [u].[Id]
+    WHERE [j].[Id] = [j0].[JogosId] AND [u].[Id] = @__usuarioId_0)
+2025-05-21 00:31:55.061 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Core.Entity.Jogo, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-21 00:31:55.064 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.ListarJogosDoUsuario (TechChallengeApi) in 307.558ms
+2025-05-21 00:31:55.071 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.ListarJogosDoUsuario (TechChallengeApi)'
+2025-05-21 00:31:55.074 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/Usuario/jogos/2 - 200 null application/json; charset=utf-8 338.3509ms
+2025-05-21 00:32:09.088 -03:00 [INF] Request starting HTTP/2 PUT https://localhost:7241/Usuario/2/jogos/1 - null 0
+2025-05-21 00:32:09.099 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.AdicionarJogoAoUsuario (TechChallengeApi)'
+2025-05-21 00:32:09.105 -03:00 [INF] Route matched with {action = "AdicionarJogoAoUsuario", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AdicionarJogoAoUsuario(Int32, Int32) on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:32:09.385 -03:00 [INF] Executed DbCommand (85ms) [Parameters=[@__jogoId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[DataCriacao], [t].[Desconto], [t].[Nome], [t].[Valor], [t0].[JogosId], [t0].[UsuariosId], [t0].[Id], [t0].[DataCriacao], [t0].[Email], [t0].[Nome], [t0].[Password], [t0].[Profile]
+FROM (
+    SELECT TOP(1) [j].[Id], [j].[DataCriacao], [j].[Desconto], [j].[Nome], [j].[Valor]
+    FROM [Jogo] AS [j]
+    WHERE [j].[Id] = @__jogoId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [j0].[JogosId], [j0].[UsuariosId], [u].[Id], [u].[DataCriacao], [u].[Email], [u].[Nome], [u].[Password], [u].[Profile]
+    FROM [JogoUsuario] AS [j0]
+    INNER JOIN [Usuario] AS [u] ON [j0].[UsuariosId] = [u].[Id]
+) AS [t0] ON [t].[Id] = [t0].[JogosId]
+ORDER BY [t].[Id], [t0].[JogosId], [t0].[UsuariosId]
+2025-05-21 00:32:09.507 -03:00 [INF] Executed DbCommand (27ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DataCriacao], [u].[Email], [u].[Nome], [u].[Password], [u].[Profile]
+FROM [Usuario] AS [u]
+WHERE [u].[Id] = @__p_0
+2025-05-21 00:32:09.644 -03:00 [INF] Executed DbCommand (37ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [JogoUsuario] ([JogosId], [UsuariosId])
+VALUES (@p0, @p1);
+2025-05-21 00:32:09.659 -03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-21 00:32:09.686 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.AdicionarJogoAoUsuario (TechChallengeApi) in 576.5976ms
+2025-05-21 00:32:09.716 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.AdicionarJogoAoUsuario (TechChallengeApi)'
+2025-05-21 00:32:09.718 -03:00 [INF] Request finished HTTP/2 PUT https://localhost:7241/Usuario/2/jogos/1 - 200 null application/json; charset=utf-8 630.3734ms
+2025-05-21 00:32:17.172 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/Usuario/jogos/2 - null null
+2025-05-21 00:32:17.202 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.ListarJogosDoUsuario (TechChallengeApi)'
+2025-05-21 00:32:17.211 -03:00 [INF] Route matched with {action = "ListarJogosDoUsuario", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ListarJogosDoUsuario(Int32) on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:32:17.227 -03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__usuarioId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [j].[Id], [j].[DataCriacao], [j].[Desconto], [j].[Nome], [j].[Valor]
+FROM [Jogo] AS [j]
+WHERE EXISTS (
+    SELECT 1
+    FROM [JogoUsuario] AS [j0]
+    INNER JOIN [Usuario] AS [u] ON [j0].[UsuariosId] = [u].[Id]
+    WHERE [j].[Id] = [j0].[JogosId] AND [u].[Id] = @__usuarioId_0)
+2025-05-21 00:32:17.234 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Core.Entity.Jogo, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-21 00:32:17.245 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.ListarJogosDoUsuario (TechChallengeApi) in 26.6795ms
+2025-05-21 00:32:17.260 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.ListarJogosDoUsuario (TechChallengeApi)'
+2025-05-21 00:32:17.268 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/Usuario/jogos/2 - 200 null application/json; charset=utf-8 95.9857ms
+2025-05-21 00:32:57.465 -03:00 [INF] Request starting HTTP/2 PUT https://localhost:7241/Usuario/2/jogos/2 - null 0
+2025-05-21 00:32:57.470 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.AdicionarJogoAoUsuario (TechChallengeApi)'
+2025-05-21 00:32:57.472 -03:00 [INF] Route matched with {action = "AdicionarJogoAoUsuario", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AdicionarJogoAoUsuario(Int32, Int32) on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:32:57.531 -03:00 [INF] Executed DbCommand (46ms) [Parameters=[@__jogoId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[DataCriacao], [t].[Desconto], [t].[Nome], [t].[Valor], [t0].[JogosId], [t0].[UsuariosId], [t0].[Id], [t0].[DataCriacao], [t0].[Email], [t0].[Nome], [t0].[Password], [t0].[Profile]
+FROM (
+    SELECT TOP(1) [j].[Id], [j].[DataCriacao], [j].[Desconto], [j].[Nome], [j].[Valor]
+    FROM [Jogo] AS [j]
+    WHERE [j].[Id] = @__jogoId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [j0].[JogosId], [j0].[UsuariosId], [u].[Id], [u].[DataCriacao], [u].[Email], [u].[Nome], [u].[Password], [u].[Profile]
+    FROM [JogoUsuario] AS [j0]
+    INNER JOIN [Usuario] AS [u] ON [j0].[UsuariosId] = [u].[Id]
+) AS [t0] ON [t].[Id] = [t0].[JogosId]
+ORDER BY [t].[Id], [t0].[JogosId], [t0].[UsuariosId]
+2025-05-21 00:32:57.550 -03:00 [INF] Executed DbCommand (10ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DataCriacao], [u].[Email], [u].[Nome], [u].[Password], [u].[Profile]
+FROM [Usuario] AS [u]
+WHERE [u].[Id] = @__p_0
+2025-05-21 00:32:57.618 -03:00 [INF] Executed DbCommand (26ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [JogoUsuario] ([JogosId], [UsuariosId])
+VALUES (@p0, @p1);
+2025-05-21 00:32:57.623 -03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-21 00:32:57.633 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.AdicionarJogoAoUsuario (TechChallengeApi) in 150.6087ms
+2025-05-21 00:32:57.648 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.AdicionarJogoAoUsuario (TechChallengeApi)'
+2025-05-21 00:32:57.651 -03:00 [INF] Request finished HTTP/2 PUT https://localhost:7241/Usuario/2/jogos/2 - 200 null application/json; charset=utf-8 186.7987ms
+2025-05-21 00:33:05.770 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/Usuario/jogos/2 - null null
+2025-05-21 00:33:05.970 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.ListarJogosDoUsuario (TechChallengeApi)'
+2025-05-21 00:33:05.972 -03:00 [INF] Route matched with {action = "ListarJogosDoUsuario", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ListarJogosDoUsuario(Int32) on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:33:05.990 -03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__usuarioId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [j].[Id], [j].[DataCriacao], [j].[Desconto], [j].[Nome], [j].[Valor]
+FROM [Jogo] AS [j]
+WHERE EXISTS (
+    SELECT 1
+    FROM [JogoUsuario] AS [j0]
+    INNER JOIN [Usuario] AS [u] ON [j0].[UsuariosId] = [u].[Id]
+    WHERE [j].[Id] = [j0].[JogosId] AND [u].[Id] = @__usuarioId_0)
+2025-05-21 00:33:06.003 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Core.Entity.Jogo, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-21 00:33:06.006 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.ListarJogosDoUsuario (TechChallengeApi) in 22.6225ms
+2025-05-21 00:33:06.036 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.ListarJogosDoUsuario (TechChallengeApi)'
+2025-05-21 00:33:06.038 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/Usuario/jogos/2 - 200 null application/json; charset=utf-8 268.6687ms
+2025-05-21 00:33:16.207 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/Jogo - null null
+2025-05-21 00:33:16.221 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.JogoController.Get (TechChallengeApi)'
+2025-05-21 00:33:16.271 -03:00 [INF] Route matched with {action = "Get", controller = "Jogo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller TechChallenge.Controllers.JogoController (TechChallengeApi).
+2025-05-21 00:33:16.304 -03:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [j].[Id], [j].[DataCriacao], [j].[Desconto], [j].[Nome], [j].[Valor]
+FROM [Jogo] AS [j]
+2025-05-21 00:33:16.311 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Core.Entity.Jogo, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-21 00:33:16.316 -03:00 [INF] Executed action TechChallenge.Controllers.JogoController.Get (TechChallengeApi) in 38.8618ms
+2025-05-21 00:33:16.318 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.JogoController.Get (TechChallengeApi)'
+2025-05-21 00:33:16.321 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/Jogo - 200 null application/json; charset=utf-8 115.1532ms
+2025-05-21 00:33:18.824 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/Jogo - null null
+2025-05-21 00:33:18.836 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.JogoController.Get (TechChallengeApi)'
+2025-05-21 00:33:18.838 -03:00 [INF] Route matched with {action = "Get", controller = "Jogo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller TechChallenge.Controllers.JogoController (TechChallengeApi).
+2025-05-21 00:33:18.854 -03:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [j].[Id], [j].[DataCriacao], [j].[Desconto], [j].[Nome], [j].[Valor]
+FROM [Jogo] AS [j]
+2025-05-21 00:33:18.861 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Core.Entity.Jogo, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-21 00:33:18.867 -03:00 [INF] Executed action TechChallenge.Controllers.JogoController.Get (TechChallengeApi) in 23.3679ms
+2025-05-21 00:33:18.871 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.JogoController.Get (TechChallengeApi)'
+2025-05-21 00:33:18.873 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/Jogo - 200 null application/json; charset=utf-8 50.2779ms
+2025-05-21 00:33:57.383 -03:00 [INF] Request starting HTTP/2 POST https://localhost:7241/Jogo - application/json 69
+2025-05-21 00:33:57.493 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.JogoController.Post (TechChallengeApi)'
+2025-05-21 00:33:57.497 -03:00 [INF] Route matched with {action = "Post", controller = "Jogo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Post(Core.Input.JogoInput) on controller TechChallenge.Controllers.JogoController (TechChallengeApi).
+2025-05-21 00:33:57.535 -03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-05-21 00:33:57.581 -03:00 [INF] Executed action TechChallenge.Controllers.JogoController.Post (TechChallengeApi) in 79.5353ms
+2025-05-21 00:33:57.584 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.JogoController.Post (TechChallengeApi)'
+2025-05-21 00:33:57.586 -03:00 [INF] Request finished HTTP/2 POST https://localhost:7241/Jogo - 400 null application/problem+json; charset=utf-8 203.7021ms
+2025-05-21 00:34:07.579 -03:00 [INF] Request starting HTTP/2 POST https://localhost:7241/Jogo - application/json 71
+2025-05-21 00:34:07.593 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.JogoController.Post (TechChallengeApi)'
+2025-05-21 00:34:07.600 -03:00 [INF] Route matched with {action = "Post", controller = "Jogo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Post(Core.Input.JogoInput) on controller TechChallenge.Controllers.JogoController (TechChallengeApi).
+2025-05-21 00:34:07.612 -03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-05-21 00:34:07.615 -03:00 [INF] Executed action TechChallenge.Controllers.JogoController.Post (TechChallengeApi) in 8.9245ms
+2025-05-21 00:34:07.618 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.JogoController.Post (TechChallengeApi)'
+2025-05-21 00:34:07.620 -03:00 [INF] Request finished HTTP/2 POST https://localhost:7241/Jogo - 400 null application/problem+json; charset=utf-8 41.5519ms
+2025-05-21 00:34:12.623 -03:00 [INF] Request starting HTTP/2 POST https://localhost:7241/Jogo - application/json 71
+2025-05-21 00:34:12.630 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.JogoController.Post (TechChallengeApi)'
+2025-05-21 00:34:12.634 -03:00 [INF] Route matched with {action = "Post", controller = "Jogo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Post(Core.Input.JogoInput) on controller TechChallenge.Controllers.JogoController (TechChallengeApi).
+2025-05-21 00:34:12.645 -03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-05-21 00:34:12.649 -03:00 [INF] Executed action TechChallenge.Controllers.JogoController.Post (TechChallengeApi) in 11.6163ms
+2025-05-21 00:34:12.655 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.JogoController.Post (TechChallengeApi)'
+2025-05-21 00:34:12.659 -03:00 [INF] Request finished HTTP/2 POST https://localhost:7241/Jogo - 400 null application/problem+json; charset=utf-8 35.5882ms
+2025-05-21 00:34:23.381 -03:00 [INF] Request starting HTTP/2 POST https://localhost:7241/Jogo - application/json 65
+2025-05-21 00:34:23.400 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.JogoController.Post (TechChallengeApi)'
+2025-05-21 00:34:23.402 -03:00 [INF] Route matched with {action = "Post", controller = "Jogo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Post(Core.Input.JogoInput) on controller TechChallenge.Controllers.JogoController (TechChallengeApi).
+2025-05-21 00:34:23.529 -03:00 [INF] Executed DbCommand (101ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Precision = 18) (Scale = 2) (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Jogo] ([DataCriacao], [Desconto], [Nome], [Valor])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2025-05-21 00:34:23.557 -03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2025-05-21 00:34:23.559 -03:00 [INF] Executed action TechChallenge.Controllers.JogoController.Post (TechChallengeApi) in 148.3021ms
+2025-05-21 00:34:23.562 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.JogoController.Post (TechChallengeApi)'
+2025-05-21 00:34:23.564 -03:00 [INF] Request finished HTTP/2 POST https://localhost:7241/Jogo - 200 0 null 183.7247ms
+2025-05-21 00:35:11.792 -03:00 [INF] Request starting HTTP/2 POST https://localhost:7241/Usuario - application/json 94
+2025-05-21 00:35:11.797 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.Post (TechChallengeApi)'
+2025-05-21 00:35:11.800 -03:00 [INF] Route matched with {action = "Post", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Post(Core.Input.UsuarioInput) on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:35:11.826 -03:00 [INF] Executed DbCommand (17ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Usuario] ([DataCriacao], [Email], [Nome], [Password], [Profile])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2025-05-21 00:35:11.830 -03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2025-05-21 00:35:11.839 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.Post (TechChallengeApi) in 33.8783ms
+2025-05-21 00:35:11.842 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.Post (TechChallengeApi)'
+2025-05-21 00:35:11.844 -03:00 [INF] Request finished HTTP/2 POST https://localhost:7241/Usuario - 200 0 null 52.7955ms
+2025-05-21 00:35:48.418 -03:00 [INF] Request starting HTTP/2 PUT https://localhost:7241/Usuario/3/jogos/3 - null 0
+2025-05-21 00:35:48.436 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.AdicionarJogoAoUsuario (TechChallengeApi)'
+2025-05-21 00:35:48.439 -03:00 [INF] Route matched with {action = "AdicionarJogoAoUsuario", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AdicionarJogoAoUsuario(Int32, Int32) on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:35:48.453 -03:00 [INF] Executed DbCommand (8ms) [Parameters=[@__jogoId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[DataCriacao], [t].[Desconto], [t].[Nome], [t].[Valor], [t0].[JogosId], [t0].[UsuariosId], [t0].[Id], [t0].[DataCriacao], [t0].[Email], [t0].[Nome], [t0].[Password], [t0].[Profile]
+FROM (
+    SELECT TOP(1) [j].[Id], [j].[DataCriacao], [j].[Desconto], [j].[Nome], [j].[Valor]
+    FROM [Jogo] AS [j]
+    WHERE [j].[Id] = @__jogoId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [j0].[JogosId], [j0].[UsuariosId], [u].[Id], [u].[DataCriacao], [u].[Email], [u].[Nome], [u].[Password], [u].[Profile]
+    FROM [JogoUsuario] AS [j0]
+    INNER JOIN [Usuario] AS [u] ON [j0].[UsuariosId] = [u].[Id]
+) AS [t0] ON [t].[Id] = [t0].[JogosId]
+ORDER BY [t].[Id], [t0].[JogosId], [t0].[UsuariosId]
+2025-05-21 00:35:48.466 -03:00 [INF] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DataCriacao], [u].[Email], [u].[Nome], [u].[Password], [u].[Profile]
+FROM [Usuario] AS [u]
+WHERE [u].[Id] = @__p_0
+2025-05-21 00:35:48.489 -03:00 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [JogoUsuario] ([JogosId], [UsuariosId])
+VALUES (@p0, @p1);
+2025-05-21 00:35:48.493 -03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-21 00:35:48.501 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.AdicionarJogoAoUsuario (TechChallengeApi) in 58.2503ms
+2025-05-21 00:35:48.503 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.AdicionarJogoAoUsuario (TechChallengeApi)'
+2025-05-21 00:35:48.505 -03:00 [INF] Request finished HTTP/2 PUT https://localhost:7241/Usuario/3/jogos/3 - 200 null application/json; charset=utf-8 88.5776ms
+2025-05-21 00:35:53.485 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/Usuario/jogos/3 - null null
+2025-05-21 00:35:53.661 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.ListarJogosDoUsuario (TechChallengeApi)'
+2025-05-21 00:35:53.667 -03:00 [INF] Route matched with {action = "ListarJogosDoUsuario", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ListarJogosDoUsuario(Int32) on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:35:53.681 -03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__usuarioId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [j].[Id], [j].[DataCriacao], [j].[Desconto], [j].[Nome], [j].[Valor]
+FROM [Jogo] AS [j]
+WHERE EXISTS (
+    SELECT 1
+    FROM [JogoUsuario] AS [j0]
+    INNER JOIN [Usuario] AS [u] ON [j0].[UsuariosId] = [u].[Id]
+    WHERE [j].[Id] = [j0].[JogosId] AND [u].[Id] = @__usuarioId_0)
+2025-05-21 00:35:53.692 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Core.Entity.Jogo, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-21 00:35:53.701 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.ListarJogosDoUsuario (TechChallengeApi) in 27.5132ms
+2025-05-21 00:35:53.707 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.ListarJogosDoUsuario (TechChallengeApi)'
+2025-05-21 00:35:53.709 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/Usuario/jogos/3 - 200 null application/json; charset=utf-8 224.8256ms
+2025-05-21 00:36:08.447 -03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7241/Usuario/3/jogos/3 - null null
+2025-05-21 00:36:08.456 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.RemoverJogoDoUsuario (TechChallengeApi)'
+2025-05-21 00:36:08.468 -03:00 [INF] Route matched with {action = "RemoverJogoDoUsuario", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RemoverJogoDoUsuario(Int32, Int32) on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:36:08.487 -03:00 [INF] Executed DbCommand (10ms) [Parameters=[@__jogoId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[DataCriacao], [t].[Desconto], [t].[Nome], [t].[Valor], [t0].[JogosId], [t0].[UsuariosId], [t0].[Id], [t0].[DataCriacao], [t0].[Email], [t0].[Nome], [t0].[Password], [t0].[Profile]
+FROM (
+    SELECT TOP(1) [j].[Id], [j].[DataCriacao], [j].[Desconto], [j].[Nome], [j].[Valor]
+    FROM [Jogo] AS [j]
+    WHERE [j].[Id] = @__jogoId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [j0].[JogosId], [j0].[UsuariosId], [u].[Id], [u].[DataCriacao], [u].[Email], [u].[Nome], [u].[Password], [u].[Profile]
+    FROM [JogoUsuario] AS [j0]
+    INNER JOIN [Usuario] AS [u] ON [j0].[UsuariosId] = [u].[Id]
+) AS [t0] ON [t].[Id] = [t0].[JogosId]
+ORDER BY [t].[Id], [t0].[JogosId], [t0].[UsuariosId]
+2025-05-21 00:36:08.590 -03:00 [INF] Executed DbCommand (61ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [JogoUsuario]
+OUTPUT 1
+WHERE [JogosId] = @p0 AND [UsuariosId] = @p1;
+2025-05-21 00:36:08.604 -03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-21 00:36:08.607 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.RemoverJogoDoUsuario (TechChallengeApi) in 134.8487ms
+2025-05-21 00:36:08.618 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.RemoverJogoDoUsuario (TechChallengeApi)'
+2025-05-21 00:36:08.621 -03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7241/Usuario/3/jogos/3 - 200 null application/json; charset=utf-8 174.012ms
+2025-05-21 00:36:14.796 -03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7241/Usuario/3/jogos/7 - null null
+2025-05-21 00:36:14.817 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.RemoverJogoDoUsuario (TechChallengeApi)'
+2025-05-21 00:36:14.822 -03:00 [INF] Route matched with {action = "RemoverJogoDoUsuario", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RemoverJogoDoUsuario(Int32, Int32) on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:36:14.892 -03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__jogoId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[DataCriacao], [t].[Desconto], [t].[Nome], [t].[Valor], [t0].[JogosId], [t0].[UsuariosId], [t0].[Id], [t0].[DataCriacao], [t0].[Email], [t0].[Nome], [t0].[Password], [t0].[Profile]
+FROM (
+    SELECT TOP(1) [j].[Id], [j].[DataCriacao], [j].[Desconto], [j].[Nome], [j].[Valor]
+    FROM [Jogo] AS [j]
+    WHERE [j].[Id] = @__jogoId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [j0].[JogosId], [j0].[UsuariosId], [u].[Id], [u].[DataCriacao], [u].[Email], [u].[Nome], [u].[Password], [u].[Profile]
+    FROM [JogoUsuario] AS [j0]
+    INNER JOIN [Usuario] AS [u] ON [j0].[UsuariosId] = [u].[Id]
+) AS [t0] ON [t].[Id] = [t0].[JogosId]
+ORDER BY [t].[Id], [t0].[JogosId], [t0].[UsuariosId]
+2025-05-21 00:36:15.324 -03:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-21 00:36:15.333 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.RemoverJogoDoUsuario (TechChallengeApi) in 474.0129ms
+2025-05-21 00:36:15.336 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.RemoverJogoDoUsuario (TechChallengeApi)'
+2025-05-21 00:36:15.339 -03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7241/Usuario/3/jogos/7 - 400 null application/json; charset=utf-8 543.4258ms
+2025-05-21 00:36:19.517 -03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7241/Usuario/4/jogos/7 - null null
+2025-05-21 00:36:19.572 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.RemoverJogoDoUsuario (TechChallengeApi)'
+2025-05-21 00:36:19.574 -03:00 [INF] Route matched with {action = "RemoverJogoDoUsuario", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RemoverJogoDoUsuario(Int32, Int32) on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:36:19.587 -03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__jogoId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[DataCriacao], [t].[Desconto], [t].[Nome], [t].[Valor], [t0].[JogosId], [t0].[UsuariosId], [t0].[Id], [t0].[DataCriacao], [t0].[Email], [t0].[Nome], [t0].[Password], [t0].[Profile]
+FROM (
+    SELECT TOP(1) [j].[Id], [j].[DataCriacao], [j].[Desconto], [j].[Nome], [j].[Valor]
+    FROM [Jogo] AS [j]
+    WHERE [j].[Id] = @__jogoId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [j0].[JogosId], [j0].[UsuariosId], [u].[Id], [u].[DataCriacao], [u].[Email], [u].[Nome], [u].[Password], [u].[Profile]
+    FROM [JogoUsuario] AS [j0]
+    INNER JOIN [Usuario] AS [u] ON [j0].[UsuariosId] = [u].[Id]
+) AS [t0] ON [t].[Id] = [t0].[JogosId]
+ORDER BY [t].[Id], [t0].[JogosId], [t0].[UsuariosId]
+2025-05-21 00:36:19.672 -03:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-21 00:36:19.675 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.RemoverJogoDoUsuario (TechChallengeApi) in 92.2968ms
+2025-05-21 00:36:19.684 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.RemoverJogoDoUsuario (TechChallengeApi)'
+2025-05-21 00:36:19.686 -03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7241/Usuario/4/jogos/7 - 400 null application/json; charset=utf-8 169.2618ms
+2025-05-21 00:36:24.285 -03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7241/Usuario/9/jogos/7 - null null
+2025-05-21 00:36:24.349 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.RemoverJogoDoUsuario (TechChallengeApi)'
+2025-05-21 00:36:24.353 -03:00 [INF] Route matched with {action = "RemoverJogoDoUsuario", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RemoverJogoDoUsuario(Int32, Int32) on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:36:24.421 -03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__jogoId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[DataCriacao], [t].[Desconto], [t].[Nome], [t].[Valor], [t0].[JogosId], [t0].[UsuariosId], [t0].[Id], [t0].[DataCriacao], [t0].[Email], [t0].[Nome], [t0].[Password], [t0].[Profile]
+FROM (
+    SELECT TOP(1) [j].[Id], [j].[DataCriacao], [j].[Desconto], [j].[Nome], [j].[Valor]
+    FROM [Jogo] AS [j]
+    WHERE [j].[Id] = @__jogoId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [j0].[JogosId], [j0].[UsuariosId], [u].[Id], [u].[DataCriacao], [u].[Email], [u].[Nome], [u].[Password], [u].[Profile]
+    FROM [JogoUsuario] AS [j0]
+    INNER JOIN [Usuario] AS [u] ON [j0].[UsuariosId] = [u].[Id]
+) AS [t0] ON [t].[Id] = [t0].[JogosId]
+ORDER BY [t].[Id], [t0].[JogosId], [t0].[UsuariosId]
+2025-05-21 00:36:24.554 -03:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-21 00:36:24.570 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.RemoverJogoDoUsuario (TechChallengeApi) in 164.4853ms
+2025-05-21 00:36:24.573 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.RemoverJogoDoUsuario (TechChallengeApi)'
+2025-05-21 00:36:24.587 -03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7241/Usuario/9/jogos/7 - 400 null application/json; charset=utf-8 302.438ms
+2025-05-21 00:36:54.081 -03:00 [INF] Now listening on: https://localhost:7241
+2025-05-21 00:36:54.215 -03:00 [INF] Now listening on: http://localhost:5090
+2025-05-21 00:36:54.738 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-21 00:36:54.804 -03:00 [INF] Hosting environment: Development
+2025-05-21 00:36:54.837 -03:00 [INF] Content root path: C:\GitHub\techchallenge\TechChallengeApi
+2025-05-21 00:36:55.003 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/index.html - null null
+2025-05-21 00:36:56.176 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/index.html - 200 null text/html;charset=utf-8 1188.2232ms
+2025-05-21 00:36:56.256 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-21 00:36:56.256 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/_vs/browserLink - null null
+2025-05-21 00:36:56.274 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/_framework/aspnetcore-browser-refresh.js - 200 13768 application/javascript; charset=utf-8 52.6931ms
+2025-05-21 00:36:56.413 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/_vs/browserLink - 200 null text/javascript; charset=UTF-8 156.8904ms
+2025-05-21 00:36:56.781 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - null null
+2025-05-21 00:36:56.924 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 141.892ms
+2025-05-21 00:37:07.417 -03:00 [INF] Request starting HTTP/2 POST https://localhost:7241/Usuario/2/jogos/3 - null 0
+2025-05-21 00:37:07.434 -03:00 [INF] Executing endpoint 'TechChallenge.Controllers.UsuarioController.AdicionarJogoAoUsuario (TechChallengeApi)'
+2025-05-21 00:37:07.513 -03:00 [INF] Route matched with {action = "AdicionarJogoAoUsuario", controller = "Usuario"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AdicionarJogoAoUsuario(Int32, Int32) on controller TechChallenge.Controllers.UsuarioController (TechChallengeApi).
+2025-05-21 00:37:09.278 -03:00 [WRN] No store type was specified for the decimal property 'Valor' on entity type 'Jogo'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-05-21 00:37:11.883 -03:00 [INF] Executed DbCommand (88ms) [Parameters=[@__jogoId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[DataCriacao], [t].[Desconto], [t].[Nome], [t].[Valor], [t0].[JogosId], [t0].[UsuariosId], [t0].[Id], [t0].[DataCriacao], [t0].[Email], [t0].[Nome], [t0].[Password], [t0].[Profile]
+FROM (
+    SELECT TOP(1) [j].[Id], [j].[DataCriacao], [j].[Desconto], [j].[Nome], [j].[Valor]
+    FROM [Jogo] AS [j]
+    WHERE [j].[Id] = @__jogoId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [j0].[JogosId], [j0].[UsuariosId], [u].[Id], [u].[DataCriacao], [u].[Email], [u].[Nome], [u].[Password], [u].[Profile]
+    FROM [JogoUsuario] AS [j0]
+    INNER JOIN [Usuario] AS [u] ON [j0].[UsuariosId] = [u].[Id]
+) AS [t0] ON [t].[Id] = [t0].[JogosId]
+ORDER BY [t].[Id], [t0].[JogosId], [t0].[UsuariosId]
+2025-05-21 00:37:12.119 -03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[DataCriacao], [u].[Email], [u].[Nome], [u].[Password], [u].[Profile]
+FROM [Usuario] AS [u]
+WHERE [u].[Id] = @__p_0
+2025-05-21 00:37:12.492 -03:00 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [JogoUsuario] ([JogosId], [UsuariosId])
+VALUES (@p0, @p1);
+2025-05-21 00:37:12.520 -03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-21 00:37:12.550 -03:00 [INF] Executed action TechChallenge.Controllers.UsuarioController.AdicionarJogoAoUsuario (TechChallengeApi) in 5024.0871ms
+2025-05-21 00:37:12.553 -03:00 [INF] Executed endpoint 'TechChallenge.Controllers.UsuarioController.AdicionarJogoAoUsuario (TechChallengeApi)'
+2025-05-21 00:37:12.585 -03:00 [INF] Request finished HTTP/2 POST https://localhost:7241/Usuario/2/jogos/3 - 200 null application/json; charset=utf-8 5169.0397ms

@@ -128,4 +128,32 @@ public class UsuarioController : ControllerBase
             return BadRequest(new { error = e.Message });
         }
     }
+
+    [HttpPost("{usuarioId}/jogo/{jogoId}")]
+    public IActionResult AdicionarJogoAoUsuario(int usuarioId, int jogoId)
+    {
+        try
+        {
+            _usuarioRepository.VincularJogoAoUsuario(jogoId, usuarioId);
+            return Ok(new { mensagem = "Jogo vinculado com sucesso." });
+        }
+        catch (Exception e)
+        {
+            return BadRequest(new { error = e.Message });
+        }
+    }
+
+    [HttpDelete("{usuarioId}/jogo/{jogoId}")]
+    public IActionResult RemoverJogoDoUsuario(int usuarioId, int jogoId)
+    {
+        try
+        {
+            _usuarioRepository.DesvincularJogoDoUsuario(jogoId, usuarioId);
+            return Ok(new { mensagem = "Jogo desvinculado com sucesso." });
+        }
+        catch (Exception e)
+        {
+            return BadRequest(new { error = e.Message });
+        }
+    }
 }
