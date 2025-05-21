@@ -1,7 +1,11 @@
 using Core.Entity;
 using Core.Input;
 using Core.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using TechChallenge.Models;
+using TechChallenge.Security;
 
 namespace TechChallenge.Controllers;
 
@@ -10,10 +14,17 @@ namespace TechChallenge.Controllers;
 public class UsuarioController : ControllerBase
 {
     private readonly IUsuarioRepository _usuarioRepository;
+    private readonly IPasswordHasher _passwordHasher;
+    private readonly IJwtService _jwtService;
 
-    public UsuarioController(IUsuarioRepository usuarioRepository)
+    public UsuarioController(
+        IUsuarioRepository usuarioRepository, 
+        IPasswordHasher passwordHasher, 
+        IJwtService jwtService)
     {
         _usuarioRepository = usuarioRepository;
+        _passwordHasher = passwordHasher;
+        _jwtService = jwtService;
     }
 
     [HttpGet]
@@ -58,7 +69,7 @@ public class UsuarioController : ControllerBase
             {
                 Nome = input.Nome,
                 Email = input.Email,
-                Password = input.Password,
+                Password = _passwordHasher.Hash(input.Password),
                 Profile = false,
             };
 
@@ -84,7 +95,7 @@ public class UsuarioController : ControllerBase
 
             usuario.Nome = input.Nome;
             usuario.Email = input.Email;
-            usuario.Password = input.Password;
+            usuario.Password = _passwordHasher.Hash(input.Password);
 
             _usuarioRepository.Alterar(usuario);
 
@@ -155,5 +166,31 @@ public class UsuarioController : ControllerBase
         {
             return BadRequest(new { error = e.Message });
         }
+    }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login(LoginModel model)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest();
+
+        var usuario = await _usuarioRepository.ObterPorEmailAsync(model.Email);
+
+        if (usuario == null)
+            return Unauthorized();
+        if (!_passwordHasher.Verify(model.Password, usuario.Password))
+            return Unauthorized();
+
+        return Ok(_jwtService.GenerateToken(usuario));
+    }
+
+    [HttpGet("me")]
+    [Authorize]
+    public async Task<IActionResult> Me()
+    {
+        var email = User.Claims.Single(c => c.Type == ClaimTypes.Email).Value;
+        var usuario = await _usuarioRepository.ObterPorEmailAsync(email);
+
+        return Ok(usuario);
     }
 }

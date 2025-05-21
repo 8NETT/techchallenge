@@ -37,4 +37,7 @@ public class UsuarioRepository : EFRepository<Usuario>, IUsuarioRepository
         jogo.Usuarios.Remove(usuario);
         _context.SaveChanges();
     }
+
+    public async Task<Usuario?> ObterPorEmailAsync(string email) =>
+        await _dbSet.SingleOrDefaultAsync(u => u.Email == email);
 }
