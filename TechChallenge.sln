@@ -1,10 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechChallengeApi", "TechChallengeApi\TechChallengeApi.csproj", "{456133B1-DCE8-4CD1-BCDD-375444282A34}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{BCC08F99-D920-42ED-A469-255DEAAFD28F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{D56C0A88-95B3-4AEE-BFAE-65A90CBFC209}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechChallengeTest", "TechChallengeTest\TechChallengeTest.csproj", "{593C5633-C673-481A-8EBD-222643F4D5E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +29,12 @@ Global
 		{D56C0A88-95B3-4AEE-BFAE-65A90CBFC209}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D56C0A88-95B3-4AEE-BFAE-65A90CBFC209}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D56C0A88-95B3-4AEE-BFAE-65A90CBFC209}.Release|Any CPU.Build.0 = Release|Any CPU
+		{593C5633-C673-481A-8EBD-222643F4D5E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{593C5633-C673-481A-8EBD-222643F4D5E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{593C5633-C673-481A-8EBD-222643F4D5E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{593C5633-C673-481A-8EBD-222643F4D5E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

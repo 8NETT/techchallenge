@@ -63,6 +63,12 @@ public class UsuarioController : ControllerBase
     [HttpPost]
     public IActionResult Post([FromBody] UsuarioInput input)
     {
+        //O catch nao pega o dataAnotations, verificação para retornar badrequest
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
         try
         {
             var usuario = new Usuario()
