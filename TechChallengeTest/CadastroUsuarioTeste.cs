@@ -1,4 +1,3 @@
-using Core.Entity;
 using Core.Input;
 using Core.Repository;
 using Microsoft.AspNetCore.Mvc;
@@ -8,18 +7,13 @@ using TechChallenge.Security;
 
 namespace TechChallengeTest
 {
-    public class CadastroUsuarioTest
+    public class CadastroUsuarioTeste
     {
         [Fact]
         public void Post_DeveCadastrarUsuarioComSucesso()
         {
             // Arrange
-            var input = new UsuarioInput
-            {
-                Nome = "Teste",
-                Email = "teste@teste.com",
-                Password = "Senha@123"
-            };
+            var input = new UsuarioInput {Nome = "Teste",Email = "teste@teste.com",Password = "Senha@123"};
 
             var mockRepo = new Mock<IUsuarioRepository>();
             var mockHasher = new Mock<IPasswordHasher>();
@@ -57,9 +51,13 @@ namespace TechChallengeTest
             //Act
             var result = controller.Post(input);
 
+
+            //Assert
             Assert.IsType<BadRequestObjectResult>(result);
 
         }
+
+
 
     }
 }
