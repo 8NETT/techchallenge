@@ -128,7 +128,7 @@ public class UsuarioController : ControllerBase
         }
     }
 
-    [HttpGet("jogos/{usuarioId}")]
+    [HttpGet("jogos/{usuarioId:int}")]
     public IActionResult ListarJogosDoUsuario([FromRoute] int usuarioId)
     {
         try
@@ -141,8 +141,8 @@ public class UsuarioController : ControllerBase
         }
     }
 
-    [HttpPost("{usuarioId}/jogo/{jogoId}")]
-    public IActionResult AdicionarJogoAoUsuario(int usuarioId, int jogoId)
+    [HttpPost("jogos/{usuarioId:int}")]
+    public IActionResult AdicionarJogoAoUsuario([FromRoute] int usuarioId, [FromBody] int jogoId)
     {
         try
         {
@@ -155,8 +155,8 @@ public class UsuarioController : ControllerBase
         }
     }
 
-    [HttpDelete("{usuarioId}/jogo/{jogoId}")]
-    public IActionResult RemoverJogoDoUsuario(int usuarioId, int jogoId)
+    [HttpDelete("jogos/{usuarioId:int}")]
+    public IActionResult RemoverJogoDoUsuario([FromRoute] int usuarioId, [FromBody] int jogoId)
     {
         try
         {
