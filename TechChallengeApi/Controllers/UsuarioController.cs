@@ -3,28 +3,24 @@ using Core.Input;
 using Core.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-using TechChallenge.Models;
 using TechChallenge.Security;
 
 namespace TechChallenge.Controllers;
 
 [ApiController]
 [Route("/[controller]")]
+[Authorize(Policy = "Administrador")]
 public class UsuarioController : ControllerBase
 {
     private readonly IUsuarioRepository _usuarioRepository;
     private readonly IPasswordHasher _passwordHasher;
-    private readonly IJwtService _jwtService;
 
     public UsuarioController(
         IUsuarioRepository usuarioRepository, 
-        IPasswordHasher passwordHasher, 
-        IJwtService jwtService)
+        IPasswordHasher passwordHasher)
     {
         _usuarioRepository = usuarioRepository;
         _passwordHasher = passwordHasher;
-        _jwtService = jwtService;
     }
 
     [HttpGet]
@@ -32,7 +28,6 @@ public class UsuarioController : ControllerBase
     {
         try
         {
-            // throw new Exception("Erro ao obter usuários"); // Simulando um erro para teste
             return Ok(_usuarioRepository.ObterTodos());
         }
         catch (Exception e)
@@ -172,31 +167,5 @@ public class UsuarioController : ControllerBase
         {
             return BadRequest(new { error = e.Message });
         }
-    }
-
-    [HttpPost("login")]
-    public async Task<IActionResult> Login(LoginModel model)
-    {
-        if (!ModelState.IsValid)
-            return BadRequest();
-
-        var usuario = await _usuarioRepository.ObterPorEmailAsync(model.Email);
-
-        if (usuario == null)
-            return Unauthorized();
-        if (!_passwordHasher.Verify(model.Password, usuario.Password))
-            return Unauthorized();
-
-        return Ok(_jwtService.GenerateToken(usuario));
-    }
-
-    [HttpGet("me")]
-    [Authorize]
-    public async Task<IActionResult> Me()
-    {
-        var email = User.Claims.Single(c => c.Type == ClaimTypes.Email).Value;
-        var usuario = await _usuarioRepository.ObterPorEmailAsync(email);
-
-        return Ok(usuario);
     }
 }

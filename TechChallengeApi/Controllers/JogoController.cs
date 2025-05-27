@@ -1,12 +1,14 @@
 using Core.Entity;
 using Core.Input;
 using Core.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TechChallenge.Controllers;
 
 [ApiController]
 [Route("/[controller]")]
+[Authorize]
 public class JogoController : ControllerBase
 {
     private readonly IJogoRepository _jogoRepository;
@@ -50,6 +52,7 @@ public class JogoController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Policy = "Administrador")]
     public IActionResult Post([FromBody] JogoInput input)
     {
         try
@@ -76,11 +79,11 @@ public class JogoController : ControllerBase
     }
     
     [HttpPut("{id}")]
+    [Authorize(Policy = "Administrador")]
     public IActionResult Put([FromRoute] int id, [FromBody] JogoInput input)
     {
         try
         {
-            //Todo: implmentar validacao de perfil admin
             var jogo = _jogoRepository.ObterPorId(id);
 
             jogo.Nome = input.Nome;
@@ -99,12 +102,13 @@ public class JogoController : ControllerBase
             });
         }
     }
+
     [HttpDelete("{id}")]
+    [Authorize(Policy = "Administrador")]
     public IActionResult Delete([FromRoute] int id)
     {
         try
         {
-            //Todo: implmentar validacao de perfil admin
             _jogoRepository.Deletar(id);
             return Ok();
         }

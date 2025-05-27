@@ -35,12 +35,13 @@ namespace TechChallenge.Security
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.Name, usuario.Nome),
-                new Claim(ClaimTypes.Email, usuario.Email)
+                new Claim(JwtRegisteredClaimNames.Sub, usuario.Id.ToString())
             };
 
             if (usuario.Profile)
                 claims.Add(new Claim(ClaimTypes.Role, "Administrador"));
+            else
+                claims.Add(new Claim(ClaimTypes.Role, "Usuário"));
 
             return claims.ToArray();
         }
