@@ -10,9 +10,9 @@ namespace TechChallenge.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private IUsuarioRepository _usuarioRepository;
-        private IPasswordHasher _passwordHasher;
-        private IJwtService _jwtService;
+        private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IPasswordHasher _passwordHasher;
+        private readonly IJwtService _jwtService;
 
         public AccountController(
             IUsuarioRepository usuarioRepository, 
