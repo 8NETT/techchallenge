@@ -1,9 +1,8 @@
-using Core.Entity;
-using Core.Input;
-using Core.Repository;
+using Application.Contracts;
+using Application.DTOs;
+using Ardalis.Result;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TechChallenge.Security;
 
 namespace TechChallenge.Controllers;
 
@@ -12,15 +11,11 @@ namespace TechChallenge.Controllers;
 [Authorize(Policy = "Administrador")]
 public class UsuarioController : ControllerBase
 {
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly IPasswordHasher _passwordHasher;
+    private readonly IUsuarioService _usuarioService;
 
-    public UsuarioController(
-        IUnitOfWork unitOfWork, 
-        IPasswordHasher passwordHasher)
+    public UsuarioController(IUsuarioService usuarioService)
     {
-        _unitOfWork = unitOfWork;
-        _passwordHasher = passwordHasher;
+        _usuarioService = usuarioService;
     }
 
     [HttpGet]
@@ -28,7 +23,7 @@ public class UsuarioController : ControllerBase
     {
         try
         {
-            return Ok(await _unitOfWork.UsuarioRepository.ObterTodosAsync());
+            return Ok(await _usuarioService.ObterTodosAsync());
         }
         catch (Exception e)
         {
@@ -44,12 +39,12 @@ public class UsuarioController : ControllerBase
     {
         try
         {
-            var usuario = await _unitOfWork.UsuarioRepository.ObterPorIdAsync(id);
+            var result = await _usuarioService.ObterPorIdAsync(id);
 
-            if (usuario == null)
-                return NotFound();
+            if (result.IsNotFound())
+                return NotFound(result.Errors);
 
-            return Ok(usuario);
+            return Ok(result.Value);
         }
         catch (Exception e)
         {
@@ -61,25 +56,21 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] UsuarioInput input)
+    public async Task<IActionResult> Post([FromBody] CadastrarUsuarioDTO dto)
     {
         try
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var usuario = new Usuario()
-            {
-                Nome = input.Nome,
-                Email = input.Email,
-                Password = _passwordHasher.Hash(input.Password),
-                Profile = false,
-            };
+            var result = await _usuarioService.CadastrarAsync(dto);
 
-            _unitOfWork.UsuarioRepository.Cadastrar(usuario);
-            await _unitOfWork.CommitAsync();
+            if (result.IsInvalid())
+                return BadRequest(result.Errors);
+            if (result.IsConflict())
+                return Conflict(result.Errors);
 
-            return Ok();
+            return Ok(result.Value);
         }
         catch (Exception e)
         {
@@ -91,26 +82,23 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> Put([FromRoute] int id, [FromBody] UsuarioInput input)
+    public async Task<IActionResult> Put([FromRoute] int id, [FromBody] AlterarUsuarioDTO dto)
     {
         try
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var usuario = await _unitOfWork.UsuarioRepository.ObterPorIdAsync(id);
+            var result = await _usuarioService.AlterarAsync(dto);
 
-            if (usuario == null)
-                return NotFound();
+            if (result.IsInvalid())
+                return BadRequest(result.Errors);
+            if (result.IsNotFound())
+                return NotFound(result.Errors);
+            if (result.IsConflict())
+                return Conflict(result.Errors);
 
-            usuario.Nome = input.Nome;
-            usuario.Email = input.Email;
-            usuario.Password = _passwordHasher.Hash(input.Password);
-
-            _unitOfWork.UsuarioRepository.Alterar(usuario);
-            await _unitOfWork.CommitAsync();
-
-            return Ok();
+            return Ok(result.Value);
         }
         catch (Exception e)
         {
@@ -126,13 +114,10 @@ public class UsuarioController : ControllerBase
     {
         try
         {
-            var usuario = await _unitOfWork.UsuarioRepository.ObterPorIdAsync(id);
+            var result = await _usuarioService.DeletarAsync(id);
 
-            if (usuario == null)
-                return NotFound();
-
-            _unitOfWork.UsuarioRepository.Deletar(usuario);
-            await _unitOfWork.CommitAsync();
+            if (result.IsNotFound())
+                return NotFound(result.Errors);
 
             return Ok();
         }
@@ -142,49 +127,6 @@ public class UsuarioController : ControllerBase
             {
                 error = e.Message
             });
-        }
-    }
-
-    [HttpGet("jogos/{usuarioId:int}")]
-    public IActionResult ListarJogosDoUsuario([FromRoute] int usuarioId)
-    {
-        try
-        {
-            return Ok(_unitOfWork.UsuarioRepository.ObterJogosPorUsuarioAsync(usuarioId));
-        }
-        catch (Exception e)
-        {
-            return BadRequest(new { error = e.Message });
-        }
-    }
-
-    [HttpPost("jogos/{usuarioId:int}")]
-    public async Task<IActionResult> AdicionarJogoAoUsuario([FromRoute] int usuarioId, [FromBody] int jogoId)
-    {
-        try
-        {
-            _unitOfWork.UsuarioRepository.VincularJogoAoUsuarioAsync(jogoId, usuarioId);
-            await _unitOfWork.CommitAsync();
-
-            return Ok(new { mensagem = "Jogo vinculado com sucesso." });
-        }
-        catch (Exception e)
-        {
-            return BadRequest(new { error = e.Message });
-        }
-    }
-
-    [HttpDelete("jogos/{usuarioId:int}")]
-    public IActionResult RemoverJogoDoUsuario([FromRoute] int usuarioId, [FromBody] int jogoId)
-    {
-        try
-        {
-            _unitOfWork.UsuarioRepository.DesvincularJogoDoUsuarioAsync(jogoId, usuarioId);
-            return Ok(new { mensagem = "Jogo desvinculado com sucesso." });
-        }
-        catch (Exception e)
-        {
-            return BadRequest(new { error = e.Message });
         }
     }
 }

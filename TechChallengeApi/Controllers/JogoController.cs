@@ -1,6 +1,6 @@
-using Core.Entity;
-using Core.Input;
-using Core.Repository;
+using Application.Contracts;
+using Application.DTOs;
+using Ardalis.Result;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,11 +11,11 @@ namespace TechChallenge.Controllers;
 [Authorize]
 public class JogoController : ControllerBase
 {
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly IJogoService _jogoService;
 
-    public JogoController(IUnitOfWork unitOfWork)
+    public JogoController(IJogoService jogoService)
     {
-        _unitOfWork = unitOfWork;
+        _jogoService = jogoService;
     }
 
     [HttpGet]
@@ -23,7 +23,7 @@ public class JogoController : ControllerBase
     {
         try
         {
-            return Ok(await _unitOfWork.JogoRepository.ObterTodosAsync());
+            return Ok(await _jogoService.ObterTodosAsync());
         }
         catch (Exception e)
         {
@@ -39,12 +39,12 @@ public class JogoController : ControllerBase
     {
         try
         {
-            var jogo = await _unitOfWork.JogoRepository.ObterPorIdAsync(id);
+            var result = await _jogoService.ObterPorIdAsync(id);
 
-            if (jogo == null)
-                return NotFound();
+            if (result.IsNotFound())
+                return NotFound(result.Errors);
 
-            return Ok(jogo);
+            return Ok(result.Value);
         }
         catch (Exception e)
         {
@@ -57,24 +57,21 @@ public class JogoController : ControllerBase
 
     [HttpPost]
     [Authorize(Policy = "Administrador")]
-    public async Task<IActionResult> Post([FromBody] JogoInput input)
+    public async Task<IActionResult> Post([FromBody] CadastrarJogoDTO dto)
     {
         try
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var jogo = new Jogo()
-            {
-                Nome = input.Nome,
-                Valor = input.Valor,
-                Desconto = input.Desconto,
-            };
+            var result = await _jogoService.CadastrarAsync(dto);
 
-            _unitOfWork.JogoRepository.Cadastrar(jogo);
-            await _unitOfWork.CommitAsync();
+            if (result.IsInvalid())
+                return BadRequest(result.Errors);
+            if (result.IsConflict())
+                return Conflict(result.Errors);
 
-            return Ok();
+            return Ok(result.Value);
         }
         catch (Exception e)
         {
@@ -87,23 +84,23 @@ public class JogoController : ControllerBase
     
     [HttpPut("{id:int}")]
     [Authorize(Policy = "Administrador")]
-    public async Task<IActionResult> Put([FromRoute] int id, [FromBody] JogoInput input)
+    public async Task<IActionResult> Put([FromRoute] int id, [FromBody] AlterarJogoDTO dto)
     {
         try
         {
-            var jogo = await _unitOfWork.JogoRepository.ObterPorIdAsync(id);
+            if (!ModelState.IsValid)
+                return BadRequest();
 
-            if (jogo == null)
-                return NotFound();
+            var result = await _jogoService.AlterarAsync(dto);
 
-            jogo.Nome = input.Nome;
-            jogo.Valor = input.Valor;
-            jogo.Desconto = input.Desconto;
+            if (result.IsInvalid())
+                return BadRequest(result.Errors);
+            if (result.IsNotFound())
+                return NotFound(result.Errors);
+            if (result.IsConflict())
+                return Conflict(result.Errors);
 
-            _unitOfWork.JogoRepository.Alterar(jogo);
-            await _unitOfWork.CommitAsync();
-
-            return Ok();
+            return Ok(result.Value);
         }
         catch (Exception e)
         {
@@ -120,13 +117,10 @@ public class JogoController : ControllerBase
     {
         try
         {
-            var jogo = await _unitOfWork.JogoRepository.ObterPorIdAsync(id);
+            var result = await _jogoService.DeletarAsync(id);
 
-            if (jogo == null)
-                return NotFound();
-
-            _unitOfWork.JogoRepository.Deletar(jogo);
-            await _unitOfWork.CommitAsync();
+            if (result.IsNotFound())
+                return NotFound(result.Errors);
 
             return Ok();
         }

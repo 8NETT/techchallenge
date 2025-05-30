@@ -1,6 +1,10 @@
-﻿using Core.Repository;
+﻿using Application.Contracts;
+using Application.DTOs;
+using Ardalis.Result;
+using Core.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using TechChallenge.Models;
 using TechChallenge.Security;
 
@@ -10,27 +14,30 @@ namespace TechChallenge.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IPasswordHasher _passwordHasher;
+        private readonly IUsuarioService _usuarioService;
+        private readonly IJogoService _jogoService;
         private readonly IJwtService _jwtService;
 
         public AccountController(
-            IUnitOfWork unitOfWork, 
-            IPasswordHasher passwordHasher,
+            IUsuarioService usuarioService,
             IJwtService jwtService)
         {
-            _unitOfWork = unitOfWork;
-            _passwordHasher = passwordHasher;
+            _usuarioService = usuarioService;
             _jwtService = jwtService;
         }
 
+        [HttpGet("biblioteca")]
         [Authorize]
-        [HttpGet]
         public async Task<IActionResult> Biblioteca()
         {
             try
             {
-                return Ok(await _unitOfWork.UsuarioRepository.ObterJogosPorUsuarioAsync(User.GetId()));
+                var result = await _jogoService.ObterJogosDoUsuario(User.GetId());
+
+                if (result.IsNotFound())
+                    return NotFound(result.Errors);
+
+                return Ok(result.Value);
             }
             catch (Exception e)
             {
@@ -42,21 +49,21 @@ namespace TechChallenge.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginModel model)
+        public async Task<IActionResult> Login([FromBody] LoginDTO dto)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                var usuario = await _unitOfWork.UsuarioRepository.ObterPorEmailAsync(model.Email);
+                var result = await _usuarioService.LoginAsync(dto);
 
-                if (usuario == null)
+                if (result.IsInvalid())
+                    return BadRequest(result.Errors);
+                if (result.IsUnauthorized())
                     return Unauthorized();
-                if (!_passwordHasher.Verify(model.Password, usuario.Password))
-                    return Unauthorized();
-
-                return Ok(_jwtService.GenerateToken(usuario));
+                
+                return Ok(_jwtService.GenerateToken(result.Value));
             }
             catch (Exception e)
             {

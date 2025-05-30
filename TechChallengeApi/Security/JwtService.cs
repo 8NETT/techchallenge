@@ -1,4 +1,5 @@
-﻿using Core.Entity;
+﻿using Application.DTOs;
+using Core.Entity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -17,7 +18,7 @@ namespace TechChallenge.Security
             _issuer = issuer;
         }
 
-        public string GenerateToken(Usuario usuario)
+        public string GenerateToken(UsuarioDTO usuario)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_key));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -30,7 +31,7 @@ namespace TechChallenge.Security
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        private Claim[] GenerateClaims(Usuario usuario)
+        private Claim[] GenerateClaims(UsuarioDTO usuario)
         {
             var claims = new List<Claim>
             {

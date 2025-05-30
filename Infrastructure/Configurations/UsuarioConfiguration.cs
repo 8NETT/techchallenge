@@ -2,7 +2,7 @@ using Core.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure.Repository.Configurations;
+namespace Infrastructure.Configurations;
 
 public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
 {
@@ -16,6 +16,5 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
         builder.Property(x => x.Email).HasColumnType("VARCHAR(100)").IsRequired();
         builder.Property(x => x.Password).HasColumnType("VARCHAR(100)").IsRequired();
         builder.Property(x => x.Profile).HasColumnType("BIT").IsRequired();
-        builder.HasMany(x => x.Jogos).WithMany(x => x.Usuarios);
     }
 }

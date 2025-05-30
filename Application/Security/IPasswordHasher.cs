@@ -1,4 +1,4 @@
-﻿namespace TechChallenge.Security
+﻿namespace Application.Security
 {
     public interface IPasswordHasher
     {

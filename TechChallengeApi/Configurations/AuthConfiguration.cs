@@ -14,7 +14,6 @@ namespace TechChallenge.Configurations
             var issuer = builder.Configuration["Jwt:Issuer"]
                 ?? throw new InvalidOperationException("Issuer JWT não localizado na configuração.");
 
-            builder.Services.AddScoped<IPasswordHasher, BCryptPasswordHasher>(_ => new BCryptPasswordHasher(13));
             builder.Services.AddScoped<IJwtService, JwtService>(_ => new JwtService(key, issuer));
             builder.Services
                 .AddAuthentication(options =>

@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddLogConfiguration();
 builder.AddApiConfiguration();
 builder.AddInfrastructureConfiguration();
+builder.AddApplicationConfiguration();
 builder.AddAuthenticationConfiguration();
 builder.AddAuthorizationConfiguration();
 

@@ -1,41 +1,30 @@
 using Core.Entity;
-using Infrastructure.Repository.Configurations;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.Repository;
 
 public class ApplicationDbContext : DbContext
 {
-    private readonly string _connectionString;
+    private string? _connectionString;
 
+    public ApplicationDbContext() : base() { }
 
-    public ApplicationDbContext()
-    {
-        IConfiguration configuration = new ConfigurationBuilder().SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-            .AddJsonFile("appsettings.json").Build();
-        
-        _connectionString = configuration.GetConnectionString("ConnectionString");
-    }
-
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options)
-    {
-    }
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }    
     
-    public DbSet<Usuario> Usuario { get; set; }
-    public DbSet<Jogo> Jogo { get; set; }
+    public ApplicationDbContext(string connectionString)
+    {
+        _connectionString = connectionString;
+    }
+
+    public DbSet<Jogo> Jogo { get; }
+    public DbSet<Usuario> Usuario { get; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)
-        {
             optionsBuilder.UseSqlServer(_connectionString);
-        }
     }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
+    protected override void OnModelCreating(ModelBuilder modelBuilder) =>
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationException).Assembly);
-    }
 }
