@@ -1,8 +1,8 @@
-﻿using Application.Contracts;
-using Application.Security;
-using Application.Services;
+﻿using FIAP.FCG.Application.Contracts;
+using FIAP.FCG.Application.Security;
+using FIAP.FCG.Application.Services;
 
-namespace TechChallenge.Configurations
+namespace FIAP.FCG.WebApi.Configurations
 {
     public static class ApplicationConfiguration
     {

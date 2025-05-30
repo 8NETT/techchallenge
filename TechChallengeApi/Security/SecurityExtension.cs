@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace TechChallenge.Security
+namespace FIAP.FCG.WebApi.Security
 {
     public static class SecurityExtensions
     {

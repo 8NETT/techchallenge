@@ -1,6 +1,6 @@
-using Core.Entity;
+using FIAP.FCG.Core.Entity;
 
-namespace Core.Repository;
+namespace FIAP.FCG.Core.Repository;
 
 public interface IUsuarioRepository : IRepository<Usuario>  
 {

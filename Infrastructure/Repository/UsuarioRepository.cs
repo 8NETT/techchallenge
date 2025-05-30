@@ -1,8 +1,8 @@
-using Core.Entity;
-using Core.Repository;
+using FIAP.FCG.Core.Entity;
+using FIAP.FCG.Core.Repository;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repository;
+namespace FIAP.FCG.Infrastructure.Repository;
 
 public class UsuarioRepository : EFRepository<Usuario>, IUsuarioRepository
 {

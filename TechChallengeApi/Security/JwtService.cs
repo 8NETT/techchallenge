@@ -1,11 +1,10 @@
-﻿using Application.DTOs;
-using Core.Entity;
+﻿using FIAP.FCG.Application.DTOs;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace TechChallenge.Security
+namespace FIAP.FCG.WebApi.Security
 {
     public class JwtService : IJwtService
     {

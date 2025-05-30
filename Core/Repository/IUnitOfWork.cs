@@ -1,4 +1,4 @@
-﻿namespace Core.Repository
+﻿namespace FIAP.FCG.Core.Repository
 {
     public interface IUnitOfWork : IDisposable
     {

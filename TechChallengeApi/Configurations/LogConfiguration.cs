@@ -1,6 +1,6 @@
 ﻿using Serilog;
 
-namespace TechChallenge.Configurations
+namespace FIAP.FCG.WebApi.Configurations
 {
     public static class LogConfiguration
     {

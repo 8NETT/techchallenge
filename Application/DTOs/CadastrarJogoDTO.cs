@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Application.DTOs
+namespace FIAP.FCG.Application.DTOs
 {
     public class CadastrarJogoDTO
     {

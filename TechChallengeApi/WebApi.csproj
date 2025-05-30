@@ -5,7 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <InvariantGlobalization>false</InvariantGlobalization>
-        <RootNamespace>TechChallenge</RootNamespace>
+        <RootNamespace>FIAP.FCG.WebApi</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

@@ -1,7 +1,7 @@
-﻿using Application.DTOs;
-using Core.Entity;
+﻿using FIAP.FCG.Application.DTOs;
+using FIAP.FCG.Core.Entity;
 
-namespace Application.Mappers
+namespace FIAP.FCG.Application.Mappers
 {
     internal static class UsuarioMapper
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace TechChallenge.Configurations
+namespace FIAP.FCG.WebApi.Configurations
 {
     public static class ApiConfiguration
     {

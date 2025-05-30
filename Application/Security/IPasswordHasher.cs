@@ -1,4 +1,4 @@
-﻿namespace Application.Security
+﻿namespace FIAP.FCG.Application.Security
 {
     public interface IPasswordHasher
     {

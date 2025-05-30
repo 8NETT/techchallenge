@@ -1,7 +1,7 @@
-using Core.Entity;
+using FIAP.FCG.Core.Entity;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repository;
+namespace FIAP.FCG.Infrastructure.Repository;
 
 public class ApplicationDbContext : DbContext
 {

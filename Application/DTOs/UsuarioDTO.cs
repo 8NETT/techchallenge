@@ -1,4 +1,4 @@
-﻿namespace Application.DTOs
+﻿namespace FIAP.FCG.Application.DTOs
 {
     public class UsuarioDTO
     {

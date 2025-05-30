@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using FIAP.FCG.WebApi.Security;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using TechChallenge.Security;
 
-namespace TechChallenge.Configurations
+namespace FIAP.FCG.WebApi.Configurations
 {
     public static class AuthConfiguration
     {

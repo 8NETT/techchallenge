@@ -1,6 +1,6 @@
-﻿using Core.Repository;
+﻿using FIAP.FCG.Core.Repository;
 
-namespace Infrastructure.Repository
+namespace FIAP.FCG.Infrastructure.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {

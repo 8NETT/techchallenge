@@ -1,4 +1,4 @@
-﻿namespace TechChallenge.Middleware
+﻿namespace FIAP.FCG.WebApi.Middleware
 {
     public static class ErroMiddlewareExtensions
     {

@@ -1,7 +1,6 @@
-﻿using Application.DTOs;
-using Core.Entity;
+﻿using FIAP.FCG.Application.DTOs;
 
-namespace TechChallenge.Security
+namespace FIAP.FCG.WebApi.Security
 {
     public interface IJwtService
     {

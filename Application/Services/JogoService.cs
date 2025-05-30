@@ -1,10 +1,10 @@
-﻿using Application.Contracts;
-using Application.DTOs;
-using Application.Mappers;
-using Ardalis.Result;
-using Core.Repository;
+﻿using Ardalis.Result;
+using FIAP.FCG.Application.Contracts;
+using FIAP.FCG.Application.DTOs;
+using FIAP.FCG.Application.Mappers;
+using FIAP.FCG.Core.Repository;
 
-namespace Application.Services
+namespace FIAP.FCG.Application.Services
 {
     public class JogoService : BaseService, IJogoService
     {

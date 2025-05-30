@@ -2,7 +2,7 @@
 using System.Net;
 using System.Text.Json;
 
-namespace TechChallenge.Middleware
+namespace FIAP.FCG.WebApi.Middleware
 {
     public class ErroMiddleware
     {

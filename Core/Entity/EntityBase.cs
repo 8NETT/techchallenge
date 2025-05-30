@@ -1,4 +1,4 @@
-namespace Core.Entity;
+namespace FIAP.FCG.Core.Entity;
 
 public class EntityBase
 {

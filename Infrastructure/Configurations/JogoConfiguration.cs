@@ -1,8 +1,8 @@
-using Core.Entity;
+using FIAP.FCG.Core.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure.Configurations;
+namespace FIAP.FCG.Infrastructure.Configurations;
 
 public class JogoConfiguration : IEntityTypeConfiguration<Jogo>
 {

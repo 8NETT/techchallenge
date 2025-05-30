@@ -1,10 +1,10 @@
-using Application.Contracts;
-using Application.DTOs;
 using Ardalis.Result;
+using FIAP.FCG.Application.Contracts;
+using FIAP.FCG.Application.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace TechChallenge.Controllers;
+namespace FIAP.FCG.WebApi.Controllers;
 
 [ApiController]
 [Route("/[controller]")]

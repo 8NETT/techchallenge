@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TechChallenge.Models
+namespace FIAP.FCG.WebApi.Models
 {
     public class LoginModel
     {

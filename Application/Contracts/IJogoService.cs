@@ -1,7 +1,7 @@
-﻿using Application.DTOs;
-using Ardalis.Result;
+﻿using Ardalis.Result;
+using FIAP.FCG.Application.DTOs;
 
-namespace Application.Contracts
+namespace FIAP.FCG.Application.Contracts
 {
     public interface IJogoService : IDisposable
     {

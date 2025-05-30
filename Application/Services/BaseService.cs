@@ -1,7 +1,7 @@
 ﻿using Ardalis.Result;
 using System.ComponentModel.DataAnnotations;
 
-namespace Application.Services
+namespace FIAP.FCG.Application.Services
 {
     public abstract class BaseService
     {

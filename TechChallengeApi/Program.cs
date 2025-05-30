@@ -1,5 +1,5 @@
-using TechChallenge.Configurations;
-using TechChallenge.Middleware;
+using FIAP.FCG.WebApi.Configurations;
+using FIAP.FCG.WebApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 

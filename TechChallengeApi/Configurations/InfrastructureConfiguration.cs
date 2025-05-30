@@ -1,8 +1,8 @@
-﻿using Core.Repository;
-using Infrastructure.Repository;
+﻿using FIAP.FCG.Core.Repository;
+using FIAP.FCG.Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 
-namespace TechChallenge.Configurations
+namespace FIAP.FCG.WebApi.Configurations
 {
     public static class InfrastructureConfiguration
     {
