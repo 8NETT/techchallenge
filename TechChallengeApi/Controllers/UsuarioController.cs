@@ -81,8 +81,7 @@ public class UsuarioController : ControllerBase
         }
     }
 
-    [HttpPut("{id:int}")]
-    public async Task<IActionResult> Put([FromRoute] int id, [FromBody] AlterarUsuarioDTO dto)
+    public async Task<IActionResult> Put([FromBody] AlterarUsuarioDTO dto)
     {
         try
         {
