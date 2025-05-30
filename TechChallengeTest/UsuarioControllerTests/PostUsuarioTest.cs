@@ -1,3 +1,4 @@
+using Core.Entity;
 using Core.Input;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -10,22 +11,22 @@ namespace TechChallengeTest.UnitTest.Usuarios
         public PostUsuarioTest() : base() { }
 
         [Fact]
-        public void Post_DeveCadastrarUsuarioComSucesso_OkResult()
+        public async Task Post_DeveCadastrarUsuarioComSucesso_OkResult()
         {
             // Arrange
             var input = new UsuarioInput { Nome = "Teste", Email = "teste@teste.com", Password = "Senha@123" };
-
+            UnitOfWorkMock.Setup(u => u.UsuarioRepository.Cadastrar(It.IsAny<Usuario>()));
             PasswordHasherMock.Setup(h => h.Hash(It.IsAny<string>())).Returns("senhaHash");
 
             // Act
-            var result = Controller.Post(input);
+            var result = await Controller.Post(input);
 
             // Assert
             Assert.IsType<OkResult>(result);
         }
 
         [Fact]
-        public void Post_NaoDeveCadastrarUsuario_BadRequest()
+        public async Task Post_NaoDeveCadastrarUsuario_BadRequest()
         {
             //Arrange
             var input = new UsuarioInput { Nome = "teste", Email = "teste", Password = "Senha@123" };
@@ -34,10 +35,10 @@ namespace TechChallengeTest.UnitTest.Usuarios
             Controller.ModelState.AddModelError("Email", "Email inválido");
 
             //Act
-            var result = Controller.Post(input);
+            var result = await Controller.Post(input);
 
             //Assert
-            Assert.IsType<BadRequestObjectResult>(result);
+            Assert.IsType<BadRequestResult>(result);
         }
     }
 }

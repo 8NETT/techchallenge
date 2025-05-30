@@ -7,7 +7,7 @@ namespace TechChallengeTest.AccountControllerTests
 {
     public class BaseTest
     {
-        protected Mock<IUsuarioRepository> UsuarioRepositoryMock { get; } = new();
+        protected Mock<IUnitOfWork> UnitOfWork { get; } = new();
         protected Mock<IPasswordHasher> PasswordHasherMock { get; } = new();
         protected Mock<IJwtService> JwtServiceMock { get; } = new();
         protected AccountController Controller { get; }
@@ -15,7 +15,7 @@ namespace TechChallengeTest.AccountControllerTests
         protected BaseTest()
         {
             Controller = new AccountController(
-                UsuarioRepositoryMock.Object,
+                UnitOfWork.Object,
                 PasswordHasherMock.Object,
                 JwtServiceMock.Object);
         }

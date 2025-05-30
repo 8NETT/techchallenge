@@ -10,27 +10,27 @@ namespace TechChallenge.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IPasswordHasher _passwordHasher;
         private readonly IJwtService _jwtService;
 
         public AccountController(
-            IUsuarioRepository usuarioRepository, 
+            IUnitOfWork unitOfWork, 
             IPasswordHasher passwordHasher,
             IJwtService jwtService)
         {
-            _usuarioRepository = usuarioRepository;
+            _unitOfWork = unitOfWork;
             _passwordHasher = passwordHasher;
             _jwtService = jwtService;
         }
 
         [Authorize]
         [HttpGet]
-        public IActionResult Biblioteca()
+        public async Task<IActionResult> Biblioteca()
         {
             try
             {
-                return Ok(_usuarioRepository.ObterJogosPorUsuario(User.GetId()));
+                return Ok(await _unitOfWork.UsuarioRepository.ObterJogosPorUsuarioAsync(User.GetId()));
             }
             catch (Exception e)
             {
@@ -42,14 +42,14 @@ namespace TechChallenge.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginModel model)
+        public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                var usuario = await _usuarioRepository.ObterPorEmailAsync(model.Email);
+                var usuario = await _unitOfWork.UsuarioRepository.ObterPorEmailAsync(model.Email);
 
                 if (usuario == null)
                     return Unauthorized();

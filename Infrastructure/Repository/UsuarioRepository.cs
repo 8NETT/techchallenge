@@ -10,32 +10,26 @@ public class UsuarioRepository : EFRepository<Usuario>, IUsuarioRepository
     {
     }
 
-    public IEnumerable<Jogo> ObterJogosPorUsuario(int usuarioId)
+    public async Task<IEnumerable<Jogo>> ObterJogosPorUsuarioAsync(int usuarioId)
     {
-        return _context.Jogo.Where(j => j.Usuarios.Any(u => u.Id == usuarioId)).ToList();
+        return await _context.Jogo.Where(j => j.Usuarios.Any(u => u.Id == usuarioId)).ToArrayAsync();
     }
 
-    public void VincularJogoAoUsuario(int jogoId, int usuarioId)
+    public async Task VincularJogoAoUsuarioAsync(int jogoId, int usuarioId)
     {
-        var jogo = _context.Jogo.Include(j => j.Usuarios).FirstOrDefault(j => j.Id == jogoId) ?? throw new Exception("Jogo não encontrado.");
-
-        var usuario = _context.Usuario.Find(usuarioId) ?? throw new Exception("Usuário não encontrado.");
+        var jogo = await _context.Jogo.Include(j => j.Usuarios).FirstOrDefaultAsync(j => j.Id == jogoId) ?? throw new Exception("Jogo não encontrado.");
+        var usuario = await _context.Usuario.FindAsync(usuarioId) ?? throw new Exception("Usuário não encontrado.");
 
         if (jogo.Usuarios.All(u => u.Id != usuarioId))
-        {
             jogo.Usuarios.Add(usuario);
-            _context.SaveChanges();
-        }
     }
 
-    public void DesvincularJogoDoUsuario(int jogoId, int usuarioId)
+    public async Task DesvincularJogoDoUsuarioAsync(int jogoId, int usuarioId)
     {
-        var jogo = _context.Jogo.Include(j => j.Usuarios).FirstOrDefault(j => j.Id == jogoId) ?? throw new Exception("Jogo não encontrado.");
-
+        var jogo = await _context.Jogo.Include(j => j.Usuarios).FirstOrDefaultAsync(j => j.Id == jogoId) ?? throw new Exception("Jogo não encontrado.");
         var usuario = jogo.Usuarios.FirstOrDefault(u => u.Id == usuarioId) ?? throw new Exception("Usuário não vinculado a este jogo.");
 
         jogo.Usuarios.Remove(usuario);
-        _context.SaveChanges();
     }
 
     public async Task<Usuario?> ObterPorEmailAsync(string email) =>

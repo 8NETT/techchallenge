@@ -5,7 +5,7 @@ namespace Core.Repository;
 public interface IUsuarioRepository : IRepository<Usuario>  
 {
     Task<Usuario?> ObterPorEmailAsync(string email);
-    IEnumerable<Jogo> ObterJogosPorUsuario(int usuarioId);
-    void VincularJogoAoUsuario(int jogoId, int usuarioId);
-    void DesvincularJogoDoUsuario(int jogoId, int usuarioId);
+    Task<IEnumerable<Jogo>> ObterJogosPorUsuarioAsync(int usuarioId);
+    Task VincularJogoAoUsuarioAsync(int jogoId, int usuarioId);
+    Task DesvincularJogoDoUsuarioAsync(int jogoId, int usuarioId);
 }

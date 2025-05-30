@@ -11,20 +11,19 @@ namespace TechChallenge.Controllers;
 [Authorize]
 public class JogoController : ControllerBase
 {
-    private readonly IJogoRepository _jogoRepository;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public JogoController(IJogoRepository jogoRepository)
+    public JogoController(IUnitOfWork unitOfWork)
     {
-        _jogoRepository = jogoRepository;
+        _unitOfWork = unitOfWork;
     }
 
-
     [HttpGet]
-    public IActionResult Get()
+    public async Task<IActionResult> Get()
     {
         try
         {
-            return Ok(_jogoRepository.ObterTodos());
+            return Ok(await _unitOfWork.JogoRepository.ObterTodosAsync());
         }
         catch (Exception e)
         {
@@ -35,12 +34,17 @@ public class JogoController : ControllerBase
         }
     }
 
-    [HttpGet("{id}")]
-    public IActionResult Get([FromRoute] int id)
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> Get([FromRoute] int id)
     {
         try
         {
-            return Ok(_jogoRepository.ObterPorId(id));
+            var jogo = await _unitOfWork.JogoRepository.ObterPorIdAsync(id);
+
+            if (jogo == null)
+                return NotFound();
+
+            return Ok(jogo);
         }
         catch (Exception e)
         {
@@ -53,11 +57,13 @@ public class JogoController : ControllerBase
 
     [HttpPost]
     [Authorize(Policy = "Administrador")]
-    public IActionResult Post([FromBody] JogoInput input)
+    public async Task<IActionResult> Post([FromBody] JogoInput input)
     {
         try
         {
-            //Todo: implmentar validacao de perfil admin
+            if (!ModelState.IsValid)
+                return BadRequest();
+
             var jogo = new Jogo()
             {
                 Nome = input.Nome,
@@ -65,7 +71,8 @@ public class JogoController : ControllerBase
                 Desconto = input.Desconto,
             };
 
-            _jogoRepository.Cadastar(jogo);
+            _unitOfWork.JogoRepository.Cadastrar(jogo);
+            await _unitOfWork.CommitAsync();
 
             return Ok();
         }
@@ -78,19 +85,23 @@ public class JogoController : ControllerBase
         }
     }
     
-    [HttpPut("{id}")]
+    [HttpPut("{id:int}")]
     [Authorize(Policy = "Administrador")]
-    public IActionResult Put([FromRoute] int id, [FromBody] JogoInput input)
+    public async Task<IActionResult> Put([FromRoute] int id, [FromBody] JogoInput input)
     {
         try
         {
-            var jogo = _jogoRepository.ObterPorId(id);
+            var jogo = await _unitOfWork.JogoRepository.ObterPorIdAsync(id);
+
+            if (jogo == null)
+                return NotFound();
 
             jogo.Nome = input.Nome;
             jogo.Valor = input.Valor;
             jogo.Desconto = input.Desconto;
 
-            _jogoRepository.Alterar(jogo);
+            _unitOfWork.JogoRepository.Alterar(jogo);
+            await _unitOfWork.CommitAsync();
 
             return Ok();
         }
@@ -103,13 +114,20 @@ public class JogoController : ControllerBase
         }
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:int}")]
     [Authorize(Policy = "Administrador")]
-    public IActionResult Delete([FromRoute] int id)
+    public async Task<IActionResult> Delete([FromRoute] int id)
     {
         try
         {
-            _jogoRepository.Deletar(id);
+            var jogo = await _unitOfWork.JogoRepository.ObterPorIdAsync(id);
+
+            if (jogo == null)
+                return NotFound();
+
+            _unitOfWork.JogoRepository.Deletar(jogo);
+            await _unitOfWork.CommitAsync();
+
             return Ok();
         }
         catch (Exception e)

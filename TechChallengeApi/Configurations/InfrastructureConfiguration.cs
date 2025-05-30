@@ -16,6 +16,7 @@ namespace TechChallenge.Configurations
 
             builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             builder.Services.AddScoped<IJogoRepository, JogoRepository>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace TechChallengeTest.AccountControllerTests
             var input = new LoginModel { Email = "teste@gmail.com", Password = "teste123@" };
             var usuario = new Usuario { Nome = "Teste", Email = "teste@gmail.com", Password = "Hashedteste123@", Profile = false };
 
-            UsuarioRepositoryMock.Setup(r => r.ObterPorEmailAsync(input.Email)).ReturnsAsync(usuario);
+            UnitOfWork.Setup(u => u.UsuarioRepository.ObterPorEmailAsync(input.Email)).ReturnsAsync(usuario);
             PasswordHasherMock.Setup(p => p.Verify(input.Password, usuario.Password)).Returns(true);
             JwtServiceMock.Setup(j => j.GenerateToken(usuario)).Returns("token-falso");
 
@@ -34,7 +34,7 @@ namespace TechChallengeTest.AccountControllerTests
 
             var input = new LoginModel { Email = "teste@gmail.com", Password = "teste123@" };
 
-            UsuarioRepositoryMock.Setup(r => r.ObterPorEmailAsync(input.Email)).ReturnsAsync(value: null);
+            UnitOfWork.Setup(u => u.UsuarioRepository.ObterPorEmailAsync(input.Email)).ReturnsAsync(value: null);
 
             //Act
             var result = await Controller.Login(input);
@@ -47,11 +47,10 @@ namespace TechChallengeTest.AccountControllerTests
         public async Task Post_UsuarioIncorreto_Unauthorized()
         {
             //Arrange
-
             var input = new LoginModel { Email = "teste@gmail.com", Password = "teste123@" };
             var usuario = new Usuario { Nome = "Teste", Email = "teste@gmail.com", Password = "teste123@", Profile = false };
 
-            UsuarioRepositoryMock.Setup(r => r.ObterPorEmailAsync(input.Email)).ReturnsAsync(usuario);
+            UnitOfWork.Setup(u => u.UsuarioRepository.ObterPorEmailAsync(input.Email)).ReturnsAsync(usuario);
             PasswordHasherMock.Setup(p => p.Verify(input.Password, usuario.Password)).Returns(false);
 
             //Act
@@ -69,7 +68,7 @@ namespace TechChallengeTest.AccountControllerTests
             var input = new LoginModel { Email = "teste@gmail.com", Password = "" };
             var usuario = new Usuario { Nome = "Teste", Email = "teste@gmail.com", Password = "teste123@", Profile = false };
 
-            UsuarioRepositoryMock.Setup(r => r.ObterPorEmailAsync(input.Email)).ReturnsAsync(usuario);
+            UnitOfWork.Setup(u => u.UsuarioRepository.ObterPorEmailAsync(input.Email)).ReturnsAsync(usuario);
             PasswordHasherMock.Setup(p => p.Verify(input.Password, usuario.Password)).Returns(false);
             JwtServiceMock.Setup(j => j.GenerateToken(usuario)).Returns("token-falso");
             Controller.ModelState.AddModelError("Password", "O campo Password precisa ser preenchido.");

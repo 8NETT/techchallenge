@@ -12,23 +12,23 @@ namespace TechChallenge.Controllers;
 [Authorize(Policy = "Administrador")]
 public class UsuarioController : ControllerBase
 {
-    private readonly IUsuarioRepository _usuarioRepository;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IPasswordHasher _passwordHasher;
 
     public UsuarioController(
-        IUsuarioRepository usuarioRepository, 
+        IUnitOfWork unitOfWork, 
         IPasswordHasher passwordHasher)
     {
-        _usuarioRepository = usuarioRepository;
+        _unitOfWork = unitOfWork;
         _passwordHasher = passwordHasher;
     }
 
     [HttpGet]
-    public IActionResult Get()
+    public async Task<IActionResult> Get()
     {
         try
         {
-            return Ok(_usuarioRepository.ObterTodos());
+            return Ok(await _unitOfWork.UsuarioRepository.ObterTodosAsync());
         }
         catch (Exception e)
         {
@@ -39,12 +39,17 @@ public class UsuarioController : ControllerBase
         }
     }
 
-    [HttpGet("{id}")]
-    public IActionResult Get([FromRoute] int id)
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> Get([FromRoute] int id)
     {
         try
         {
-            return Ok(_usuarioRepository.ObterPorId(id));
+            var usuario = await _unitOfWork.UsuarioRepository.ObterPorIdAsync(id);
+
+            if (usuario == null)
+                return NotFound();
+
+            return Ok(usuario);
         }
         catch (Exception e)
         {
@@ -56,16 +61,13 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult Post([FromBody] UsuarioInput input)
+    public async Task<IActionResult> Post([FromBody] UsuarioInput input)
     {
-        
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
         try
         {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
             var usuario = new Usuario()
             {
                 Nome = input.Nome,
@@ -74,7 +76,8 @@ public class UsuarioController : ControllerBase
                 Profile = false,
             };
 
-            _usuarioRepository.Cadastar(usuario);
+            _unitOfWork.UsuarioRepository.Cadastrar(usuario);
+            await _unitOfWork.CommitAsync();
 
             return Ok();
         }
@@ -87,18 +90,25 @@ public class UsuarioController : ControllerBase
         }
     }
 
-    [HttpPut("{id}")]
-    public IActionResult Put([FromRoute] int id, [FromBody] UsuarioInput input)
+    [HttpPut("{id:int}")]
+    public async Task<IActionResult> Put([FromRoute] int id, [FromBody] UsuarioInput input)
     {
         try
         {
-            var usuario = _usuarioRepository.ObterPorId(id);
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            var usuario = await _unitOfWork.UsuarioRepository.ObterPorIdAsync(id);
+
+            if (usuario == null)
+                return NotFound();
 
             usuario.Nome = input.Nome;
             usuario.Email = input.Email;
             usuario.Password = _passwordHasher.Hash(input.Password);
 
-            _usuarioRepository.Alterar(usuario);
+            _unitOfWork.UsuarioRepository.Alterar(usuario);
+            await _unitOfWork.CommitAsync();
 
             return Ok();
         }
@@ -111,12 +121,19 @@ public class UsuarioController : ControllerBase
         }
     }
 
-    [HttpDelete("{id}")]
-    public IActionResult Delete([FromRoute] int id)
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> Delete([FromRoute] int id)
     {
         try
         {
-            _usuarioRepository.Deletar(id);
+            var usuario = await _unitOfWork.UsuarioRepository.ObterPorIdAsync(id);
+
+            if (usuario == null)
+                return NotFound();
+
+            _unitOfWork.UsuarioRepository.Deletar(usuario);
+            await _unitOfWork.CommitAsync();
+
             return Ok();
         }
         catch (Exception e)
@@ -133,7 +150,7 @@ public class UsuarioController : ControllerBase
     {
         try
         {
-            return Ok(_usuarioRepository.ObterJogosPorUsuario(usuarioId));
+            return Ok(_unitOfWork.UsuarioRepository.ObterJogosPorUsuarioAsync(usuarioId));
         }
         catch (Exception e)
         {
@@ -142,11 +159,13 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpPost("jogos/{usuarioId:int}")]
-    public IActionResult AdicionarJogoAoUsuario([FromRoute] int usuarioId, [FromBody] int jogoId)
+    public async Task<IActionResult> AdicionarJogoAoUsuario([FromRoute] int usuarioId, [FromBody] int jogoId)
     {
         try
         {
-            _usuarioRepository.VincularJogoAoUsuario(jogoId, usuarioId);
+            _unitOfWork.UsuarioRepository.VincularJogoAoUsuarioAsync(jogoId, usuarioId);
+            await _unitOfWork.CommitAsync();
+
             return Ok(new { mensagem = "Jogo vinculado com sucesso." });
         }
         catch (Exception e)
@@ -160,7 +179,7 @@ public class UsuarioController : ControllerBase
     {
         try
         {
-            _usuarioRepository.DesvincularJogoDoUsuario(jogoId, usuarioId);
+            _unitOfWork.UsuarioRepository.DesvincularJogoDoUsuarioAsync(jogoId, usuarioId);
             return Ok(new { mensagem = "Jogo desvinculado com sucesso." });
         }
         catch (Exception e)

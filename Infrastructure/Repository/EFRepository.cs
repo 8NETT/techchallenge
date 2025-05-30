@@ -15,32 +15,21 @@ public class EFRepository<T> : IRepository<T> where T : EntityBase
         _dbSet = context.Set<T>();
     }
 
-    public IList<T> ObterTodos()
-    {
-        return _dbSet.ToList();
-    }
+    public async Task<IEnumerable<T>> ObterTodosAsync() =>
+        await _dbSet.ToArrayAsync();
 
-    public T ObterPorId(int id)
-    {
-        return _dbSet.FirstOrDefault(entiry => entiry.Id == id);
-    }
+    public async Task<T?> ObterPorIdAsync(int id) =>
+        await _dbSet.FirstOrDefaultAsync(e => e.Id == id);
 
-    public void Cadastar(T entidade)
+    public void Cadastrar(T entidade)
     {
         entidade.DataCriacao = DateTime.Now;
         _dbSet.Add(entidade);
-        _context.SaveChanges(); 
     }
 
-    public void Alterar(T entidade)
-    {
-        _dbSet.Update(entidade);
-        _context.SaveChanges();
-    }
+    public void Alterar(T entidade) =>
+        _dbSet.Remove(entidade);
 
-    public void Deletar(int id)
-    {
-        _dbSet.Remove(ObterPorId(id));
-        _context.SaveChanges();
-    }
+    public void Deletar(T entidade) =>
+        _dbSet.Remove(entidade);
 }
