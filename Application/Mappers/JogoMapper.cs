@@ -7,6 +7,7 @@ namespace FIAP.FCG.Application.Mappers
     {
         public static JogoDTO ToDTO(this Jogo entidade) => new JogoDTO
         {
+            Id = entidade.Id,
             Nome = entidade.Nome,
             Valor = entidade.Valor,
             Desconto = entidade.Desconto

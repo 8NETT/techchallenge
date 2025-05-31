@@ -1,28 +1,23 @@
 ﻿using Ardalis.Result;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace WebApiTests.UsuarioControllerTests
+namespace WebApiTests.JogoControllerTests
 {
-    public class DeleteUsuarioTest : IClassFixture<UsuarioControllerFixture>
+    public class DeleteJogoTest : IClassFixture<JogoControllerFixture>
     {
-        private UsuarioControllerFixture _fixture;
+        private JogoControllerFixture _fixture;
 
-        public DeleteUsuarioTest(UsuarioControllerFixture fixture)
+        public DeleteJogoTest(JogoControllerFixture fixture)
         {
             _fixture = fixture;
         }
 
         [Fact]
-        public async Task DeletarUsuario_OkResult()
+        public async Task DeletarJogo_OkResult()
         {
             // Arrange
-            _fixture.UsuarioServiceMock.Setup(s => s.DeletarAsync(1)).ReturnsAsync(Result.Success());
+            _fixture.JogoServiceMock.Setup(s => s.DeletarAsync(1)).ReturnsAsync(Result.Success());
 
             // Act
             var result = await _fixture.Controller.Delete(1);
@@ -32,10 +27,10 @@ namespace WebApiTests.UsuarioControllerTests
         }
 
         [Fact]
-        public async Task DeletarUsuario_NotFoundResult()
+        public async Task DeletarJogo_NotFoundResult()
         {
             // Arrange
-            _fixture.UsuarioServiceMock.Setup(s => s.DeletarAsync(1)).ReturnsAsync(Result.NotFound());
+            _fixture.JogoServiceMock.Setup(s => s.DeletarAsync(1)).ReturnsAsync(Result.NotFound());
 
             // Act
             var result = await _fixture.Controller.Delete(1);

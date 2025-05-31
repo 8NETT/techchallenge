@@ -82,9 +82,9 @@ public class JogoController : ControllerBase
         }
     }
     
-    [HttpPut("{id:int}")]
+    [HttpPut]
     [Authorize(Policy = "Administrador")]
-    public async Task<IActionResult> Put([FromRoute] int id, [FromBody] AlterarJogoDTO dto)
+    public async Task<IActionResult> Put([FromBody] AlterarJogoDTO dto)
     {
         try
         {

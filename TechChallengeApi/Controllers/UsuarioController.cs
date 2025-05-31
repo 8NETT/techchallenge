@@ -81,6 +81,7 @@ public class UsuarioController : ControllerBase
         }
     }
 
+    [HttpPut]
     public async Task<IActionResult> Put([FromBody] AlterarUsuarioDTO dto)
     {
         try
