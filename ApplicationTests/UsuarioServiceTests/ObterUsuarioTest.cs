@@ -19,7 +19,7 @@ namespace ApplicationTests.UsuarioServiceTests
         }
 
         [Fact]
-        public async Task ObterTodosUsuarios_SuccessResult()
+        public async Task ObterTodos_SuccessResult()
         {
             // Arrange
             _fixture.UnitOfWorkMock.Setup(u => u.UsuarioRepository.ObterTodosAsync()).ReturnsAsync([]);
