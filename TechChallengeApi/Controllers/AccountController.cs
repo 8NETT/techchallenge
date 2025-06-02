@@ -17,9 +17,11 @@ namespace FIAP.FCG.WebApi.Controllers
 
         public AccountController(
             IUsuarioService usuarioService,
+            IJogoService jogoService,
             IJwtService jwtService)
         {
             _usuarioService = usuarioService;
+            _jogoService = jogoService;
             _jwtService = jwtService;
         }
 

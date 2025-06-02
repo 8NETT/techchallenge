@@ -21,14 +21,11 @@ public class EFRepository<T> : IRepository<T> where T : EntityBase
     public async Task<T?> ObterPorIdAsync(int id) =>
         await _dbSet.FirstOrDefaultAsync(e => e.Id == id);
 
-    public void Cadastrar(T entidade)
-    {
-        entidade.DataCriacao = DateTime.Now;
+    public void Cadastrar(T entidade) =>
         _dbSet.Add(entidade);
-    }
 
     public void Alterar(T entidade) =>
-        _dbSet.Remove(entidade);
+        _dbSet.Update(entidade);
 
     public void Deletar(T entidade) =>
         _dbSet.Remove(entidade);

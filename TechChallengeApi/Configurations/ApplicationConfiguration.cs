@@ -11,6 +11,7 @@ namespace FIAP.FCG.WebApi.Configurations
             builder.Services.AddScoped<IPasswordHasher, BCryptPasswordHasher>();
             builder.Services.AddScoped<IUsuarioService, UsuarioService>();
             builder.Services.AddScoped<IJogoService, JogoService>();
+            builder.Services.AddScoped<ICompraService, CompraService>();
         }
     }
 }

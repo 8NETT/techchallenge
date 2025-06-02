@@ -16,5 +16,6 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
         builder.Property(x => x.Email).HasColumnType("VARCHAR(100)").IsRequired();
         builder.Property(x => x.Password).HasColumnType("VARCHAR(100)").IsRequired();
         builder.Property(x => x.Profile).HasColumnType("BIT").IsRequired();
+        builder.HasIndex(x => x.Email).IsUnique();
     }
 }

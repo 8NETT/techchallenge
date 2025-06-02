@@ -7,6 +7,7 @@ namespace FIAP.FCG.Infrastructure.Repository
         private ApplicationDbContext _context;
         private IUsuarioRepository _usuarioRepository = null!;
         private IJogoRepository _jogoRepository = null!;
+        private ICompraRepository _compraRepository = null!;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -18,6 +19,9 @@ namespace FIAP.FCG.Infrastructure.Repository
 
         public IJogoRepository JogoRepository =>
             _jogoRepository = _jogoRepository ?? new JogoRepository(_context);
+
+        public ICompraRepository CompraRepository =>
+            _compraRepository = _compraRepository ?? new CompraRepository(_context);
 
         public async Task CommitAsync() =>
             await _context.SaveChangesAsync();

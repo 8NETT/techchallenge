@@ -8,7 +8,7 @@ namespace FIAP.FCG.WebApi.Controllers;
 
 [ApiController]
 [Route("/[controller]")]
-[Authorize(Policy = "Administrador")]
+//[Authorize(Policy = "Administrador")]
 public class UsuarioController : ControllerBase
 {
     private readonly IUsuarioService _usuarioService;

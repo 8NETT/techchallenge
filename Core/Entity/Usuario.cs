@@ -7,4 +7,5 @@ public class Usuario : EntityBase
     public required string Email { get; set; }
     public required bool Profile { get; set; }
     public ICollection<Jogo> Biblioteca { get; set; }
+    public ICollection<Compra> Compras { get; set; }
 }
