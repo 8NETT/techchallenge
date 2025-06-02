@@ -26,7 +26,7 @@ O sistema FCG disponibiliza uma API REST em **.NET 8** para permitir que usuári
 
 ## Estrutura do Projeto
 
-O projeto adota uma **arquitetura monolítica**, centralizando todos os componentes em uma única aplicação executável. Segue o padrão **MVC (Model-View-Controller)** na organização do código: os *Controllers* recebem as requisições, interagem com os *Models* (camada de dados) e retornam as respostas apropriadas. Essa abordagem favorece a separação de responsabilidades e facilita testes e manutenção.
+O projeto adota uma **arquitetura monolítica**, centralizando todos os componentes em uma única aplicação executável. A estrutura segue uma abordagem baseada em **camadas**, com separação clara entre as responsabilidades: aplicação, domínio, infraestrutura e interface (API). Essa abordagem facilita a organização do código, promove a reutilização de componentes e permite testes mais isolados e eficientes.
 
 ## Funcionalidades Principais
 
@@ -135,4 +135,4 @@ dotnet test
 - Gabriel Costa Marques
 - Washington De Almeida Lopes
 
-Cada integrante contribuiu igualmente para o desenvolvimento da aplicação, seguindo as especificações da fase 1 do Tech Challenge.
+Cada integrante contribuiu para o desenvolvimento da aplicação, seguindo as especificações da fase 1 do Tech Challenge.
