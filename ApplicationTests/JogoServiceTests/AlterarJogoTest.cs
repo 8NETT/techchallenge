@@ -25,14 +25,13 @@ namespace ApplicationTests.JogoServiceTests
                 Valor = 100M,
                 Desconto = 10
             };
-            var jogo = new Jogo
-            {
-                Id = 1,
-                DataCriacao = DateTime.Now,
-                Nome = "Teste",
-                Valor = 50M,
-                Desconto = 0
-            };
+            var jogo = Jogo.New()
+                .Id(1)
+                .DataCriacao(DateTime.Now)
+                .Nome("Teste")
+                .Valor(50M)
+                .Desconto(0)
+                .Build();
 
             _fixture.UnitOfWorkMock.Setup(u => u.JogoRepository.ObterPorIdAsync(dto.Id)).ReturnsAsync(jogo);
             _fixture.UnitOfWorkMock.Setup(u => u.JogoRepository.Cadastrar(jogo));
@@ -81,22 +80,20 @@ namespace ApplicationTests.JogoServiceTests
                 Valor = 100M,
                 Desconto = 0
             };
-            var jogo = new Jogo
-            {
-                Id = 1,
-                DataCriacao = DateTime.Now,
-                Nome = "Teste",
-                Valor = 100M,
-                Desconto = 0
-            };
-            var outroJogo = new Jogo
-            {
-                Id = 2,
-                DataCriacao = DateTime.Now,
-                Nome = "Outro Teste",
-                Valor = 50M,
-                Desconto = 20
-            };
+            var jogo = Jogo.New()
+                .Id(1)
+                .DataCriacao(DateTime.Now)
+                .Nome("Teste")
+                .Valor(100M)
+                .Desconto(0)
+                .Build();
+            var outroJogo = Jogo.New()
+                .Id(2)
+                .DataCriacao(DateTime.Now)
+                .Nome("Outro Teste")
+                .Valor(50M)
+                .Desconto(20)
+                .Build();
 
             _fixture.UnitOfWorkMock.Setup(u => u.JogoRepository.ObterPorIdAsync(dto.Id)).ReturnsAsync(jogo);
             _fixture.UnitOfWorkMock.Setup(u => u.JogoRepository.ObterPorNomeAsync(dto.Nome)).ReturnsAsync(outroJogo);

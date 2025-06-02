@@ -30,14 +30,13 @@ namespace ApplicationTests.JogoServiceTests
         public async Task ObterPorId_SuccessResult()
         {
             // Arrange
-            var jogo = new Jogo
-            {
-                Id = 1,
-                DataCriacao = DateTime.Now,
-                Nome = "Teste",
-                Valor = 100M,
-                Desconto = 0
-            };
+            var jogo = Jogo.New()
+                .Id(1)
+                .DataCriacao(DateTime.Now)
+                .Nome("Teste")
+                .Valor(100M)
+                .Desconto(0)
+                .Build();
 
             _fixture.UnitOfWorkMock.Setup(u => u.JogoRepository.ObterPorIdAsync(1)).ReturnsAsync(jogo);
 

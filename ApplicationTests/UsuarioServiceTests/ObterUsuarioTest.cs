@@ -35,15 +35,14 @@ namespace ApplicationTests.UsuarioServiceTests
         public async Task ObterPorId_SuccessResult()
         {
             // Arrange
-            var usuario = new Usuario
-            {
-                Id = 1,
-                DataCriacao = DateTime.Now,
-                Nome = "Teste",
-                Email = "teste@example.com",
-                Password = "hashedPassword",
-                Profile = true
-            };
+            var usuario = Usuario.New()
+                .Id(1)
+                .DataCriacao(DateTime.Now)
+                .Nome("Teste")
+                .Email("teste@example.com")
+                .Password("hashedPassword")
+                .Profile(true)
+                .Build();
 
             _fixture.UnitOfWorkMock.Setup(u => u.UsuarioRepository.ObterPorIdAsync(1)).ReturnsAsync(usuario);
 

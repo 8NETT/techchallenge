@@ -13,21 +13,21 @@ namespace FIAP.FCG.Application.Mappers
             Desconto = entidade.Desconto
         };
 
-        public static Jogo ToEntity(this CadastrarJogoDTO dto) => new Jogo
-        {
-            Nome = dto.Nome,
-            Valor = dto.Valor,
-            Desconto = dto.Desconto,
-            DataCriacao = DateTime.Now
-        };
+        public static Jogo ToEntity(this CadastrarJogoDTO dto) => Jogo.New()
+            .DataCriacao(DateTime.Now)
+            .Nome(dto.Nome)
+            .Valor(dto.Valor)
+            .Descricao(dto.Descricao)
+            .Desconto(dto.Desconto)
+            .Build();
 
-        public static Jogo ToEntity(this AlterarJogoDTO dto, Jogo entidade) => new Jogo
-        {
-            Id = entidade.Id,
-            DataCriacao = entidade.DataCriacao,
-            Nome = dto.Nome,
-            Valor = dto.Valor,
-            Desconto = dto.Desconto
-        };
+        public static Jogo ToEntity(this AlterarJogoDTO dto, Jogo entidade) => Jogo.New()
+            .Id(entidade.Id)
+            .DataCriacao(entidade.DataCriacao)
+            .Nome(dto.Nome)
+            .Valor(dto.Valor)
+            .Descricao(dto.Descricao)
+            .Desconto(dto.Desconto)
+            .Build();
     }
 }

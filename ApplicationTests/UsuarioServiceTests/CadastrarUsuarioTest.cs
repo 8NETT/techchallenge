@@ -133,15 +133,14 @@ namespace ApplicationTests.UsuarioServiceTests
                 Password = "teste@1234",
                 Profile = true
             };
-            var usuario = new Usuario
-            {
-                Id = 1,
-                DataCriacao = DateTime.Now,
-                Nome = "Outro Teste",
-                Email = "teste@example.com",
-                Password = "hashedPassword",
-                Profile = true
-            };
+            var usuario = Usuario.New()
+                .Id(1)
+                .DataCriacao(DateTime.Now)
+                .Nome("Outro Teste")
+                .Email("teste@example.com")
+                .Password("hashedPassword")
+                .Profile(true)
+                .Build();
 
             _fixture.UnitOfWorkMock.Setup(u => u.UsuarioRepository.ObterPorEmailAsync(dto.Email)).ReturnsAsync(usuario);
 

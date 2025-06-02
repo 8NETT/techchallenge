@@ -17,17 +17,16 @@ namespace ApplicationTests.JogoServiceTests
         public async Task DeletarJogo_SuccessResult()
         {
             // Arrange
-            var Jogo = new Jogo
-            {
-                Id = 1,
-                DataCriacao = DateTime.Now,
-                Nome = "Teste",
-                Valor = 100M,
-                Desconto = 0
-            };
+            var jogo = Jogo.New()
+                .Id(1)
+                .DataCriacao(DateTime.Now)
+                .Nome("Teste")
+                .Valor(100M)
+                .Desconto(0)
+                .Build();
 
-            _fixture.UnitOfWorkMock.Setup(u => u.JogoRepository.ObterPorIdAsync(1)).ReturnsAsync(Jogo);
-            _fixture.UnitOfWorkMock.Setup(u => u.JogoRepository.Deletar(Jogo));
+            _fixture.UnitOfWorkMock.Setup(u => u.JogoRepository.ObterPorIdAsync(1)).ReturnsAsync(jogo);
+            _fixture.UnitOfWorkMock.Setup(u => u.JogoRepository.Deletar(jogo));
             _fixture.UnitOfWorkMock.Setup(u => u.CommitAsync());
 
             // Act

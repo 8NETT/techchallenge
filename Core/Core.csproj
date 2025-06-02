@@ -7,4 +7,8 @@
         <RootNamespace>FIAP.FCG.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="12.0.0" />
+    </ItemGroup>
+
 </Project>

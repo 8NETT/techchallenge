@@ -15,5 +15,8 @@ namespace FIAP.FCG.Application.DTOs
         [Required(ErrorMessage = "O campo {0} deve ser preenchido.")]
         [Range(0, 100, ErrorMessage = "O campo {0} deve estar entre 0 e 100.")]
         public required int Desconto { get; set; }
+
+        [MaxLength(500, ErrorMessage = "O campo {0} deve ter no máximo 500 caracteres.")]
+        public string? Descricao { get; set; }
     }
 }

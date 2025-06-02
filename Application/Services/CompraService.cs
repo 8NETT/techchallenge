@@ -40,14 +40,13 @@ namespace FIAP.FCG.Application.Services
             if (usuario.Biblioteca.Contains(jogo))
                 return Result.Conflict("Usuário já possui o jogo em sua biblioteca.");
 
-            var compra = new Compra
-            {
-                CompradorId = usuario.Id,
-                JogoId = jogo.Id,
-                Valor = jogo.Valor,
-                Desconto = jogo.Desconto,
-                Total = jogo.Valor * (1 - (Convert.ToDecimal(jogo.Desconto) / 100M))
-            };
+            var compra = Compra.New()
+                .CompradorId(usuario.Id)
+                .JogoId(jogo.Id)
+                .Valor(jogo.Valor)
+                .Desconto(jogo.Desconto)
+                .Total(jogo.Valor * (1 - (Convert.ToDecimal(jogo.Desconto) / 100M)))
+                .Build();
 
             usuario.Biblioteca.Add(jogo);
             _unitOfWork.CompraRepository.Cadastrar(compra);
