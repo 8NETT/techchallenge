@@ -3,6 +3,8 @@ using FIAP.FCG.Application.Contracts;
 using FIAP.FCG.Application.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
+using System.Net;
 
 namespace FIAP.FCG.WebApi.Controllers;
 
@@ -18,6 +20,9 @@ public class JogoController : ControllerBase
         _jogoService = jogoService;
     }
 
+    [SwaggerOperation(OperationId = "GetJogoAsync")]
+    [SwaggerResponse((int)HttpStatusCode.OK, "Jogos listados com sucesso")]
+    [SwaggerResponse((int)HttpStatusCode.BadRequest, "Erro ao efetuar busca de jogos")]
     [HttpGet]
     public async Task<IActionResult> Get()
     {
@@ -34,6 +39,9 @@ public class JogoController : ControllerBase
         }
     }
 
+    [SwaggerOperation(OperationId = "GetJogoPOrIdAsync")]
+    [SwaggerResponse((int)HttpStatusCode.OK, "Jogo encontrado com sucesso")]
+    [SwaggerResponse((int)HttpStatusCode.BadRequest, "Erro ao efetuar busca de jogo")]
     [HttpGet("{id:int}")]
     public async Task<IActionResult> Get([FromRoute] int id)
     {
@@ -55,6 +63,11 @@ public class JogoController : ControllerBase
         }
     }
 
+
+    [SwaggerOperation(OperationId = "PostJogoAsync")]
+    [SwaggerResponse((int)HttpStatusCode.OK, "Jogo cadastrado com sucesso")]
+    [SwaggerResponse((int)HttpStatusCode.Conflict, "Jogo já cadastrado")]
+    [SwaggerResponse((int)HttpStatusCode.BadRequest, "Erro ao efetuar busca de jogo")]
     [HttpPost]
     [Authorize(Policy = "Administrador")]
     public async Task<IActionResult> Post([FromBody] CadastrarJogoDTO dto)
@@ -81,7 +94,12 @@ public class JogoController : ControllerBase
             });
         }
     }
-    
+
+    [SwaggerOperation(OperationId = "PutJogoAsync")]
+    [SwaggerResponse((int)HttpStatusCode.OK, "Jogo atualizado com sucesso")]
+    [SwaggerResponse((int)HttpStatusCode.Conflict, "Jogo já cadastrado")]
+    [SwaggerResponse((int)HttpStatusCode.NotFound, "Jogo não encontrado")]
+    [SwaggerResponse((int)HttpStatusCode.BadRequest, "Erro ao efetuar atualização de jogo")]
     [HttpPut]
     [Authorize(Policy = "Administrador")]
     public async Task<IActionResult> Put([FromBody] AlterarJogoDTO dto)
@@ -111,6 +129,10 @@ public class JogoController : ControllerBase
         }
     }
 
+    [SwaggerOperation(OperationId = "DeleteJogoAsync")]
+    [SwaggerResponse((int)HttpStatusCode.OK, "Jogo deletado com sucesso")]
+    [SwaggerResponse((int)HttpStatusCode.NotFound, "Jogo não encontrado")]
+    [SwaggerResponse((int)HttpStatusCode.BadRequest, "Erro ao efetuar deleção de jogo")]
     [HttpDelete("{id:int}")]
     [Authorize(Policy = "Administrador")]
     public async Task<IActionResult> Delete([FromRoute] int id)

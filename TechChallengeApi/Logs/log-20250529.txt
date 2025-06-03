@@ -1,0 +1,91 @@
+2025-05-29 19:47:46.235 -03:00 [INF] User profile is available. Using 'C:\Users\RayanPereiraDeLima\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-05-29 19:47:46.865 -03:00 [INF] Now listening on: https://localhost:7241
+2025-05-29 19:47:46.868 -03:00 [INF] Now listening on: http://localhost:5090
+2025-05-29 19:47:46.971 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-29 19:47:46.974 -03:00 [INF] Hosting environment: Development
+2025-05-29 19:47:46.977 -03:00 [INF] Content root path: C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\TechChallengeApi
+2025-05-29 19:47:49.807 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger - null null
+2025-05-29 19:47:50.019 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger - 301 0 null 226.986ms
+2025-05-29 19:47:50.026 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/index.html - null null
+2025-05-29 19:47:50.113 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/index.html - 200 null text/html;charset=utf-8 87.1045ms
+2025-05-29 19:47:50.135 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/swagger-ui.css - null null
+2025-05-29 19:47:50.136 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/swagger-ui-bundle.js - null null
+2025-05-29 19:47:50.147 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/_vs/browserLink - null null
+2025-05-29 19:47:50.135 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/swagger-ui-standalone-preset.js - null null
+2025-05-29 19:47:50.136 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-29 19:47:50.241 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/_framework/aspnetcore-browser-refresh.js - 200 13768 application/javascript; charset=utf-8 105.7513ms
+2025-05-29 19:47:50.258 -03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-05-29 19:47:50.258 -03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-05-29 19:47:50.278 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/swagger-ui.css - 200 143943 text/css 143.6162ms
+2025-05-29 19:47:50.282 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/swagger-ui-standalone-preset.js - 200 339486 text/javascript 147.1423ms
+2025-05-29 19:47:50.308 -03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-05-29 19:47:50.316 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/swagger-ui-bundle.js - 200 1096145 text/javascript 180.3194ms
+2025-05-29 19:47:50.406 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/_vs/browserLink - 200 null text/javascript; charset=UTF-8 259.8304ms
+2025-05-29 19:47:50.597 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - null null
+2025-05-29 19:47:50.696 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/favicon-32x32.png - null null
+2025-05-29 19:47:50.698 -03:00 [ERR] Unhandled exception for request GET /swagger/v1/swagger.json
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Ambiguous HTTP method for action - TechChallenge.Controllers.AccountController.Biblioteca (TechChallengeApi). Actions require an explicit HttpMethod binding for Swagger/OpenAPI 3.0
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at TechChallenge.Middleware.ErroMiddleware.InvokeAsync(HttpContext context) in C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\TechChallengeApi\Middleware\ErroMiddleware.cs:line 20
+2025-05-29 19:47:50.704 -03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-05-29 19:47:50.807 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/favicon-32x32.png - 200 628 image/png 111.5944ms
+2025-05-29 19:47:50.811 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - 500 null application/json 213.9734ms
+2025-05-29 19:48:08.311 -03:00 [INF] User profile is available. Using 'C:\Users\RayanPereiraDeLima\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-05-29 19:48:08.613 -03:00 [INF] Now listening on: https://localhost:7241
+2025-05-29 19:48:08.618 -03:00 [INF] Now listening on: http://localhost:5090
+2025-05-29 19:48:08.684 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-29 19:48:08.688 -03:00 [INF] Hosting environment: Development
+2025-05-29 19:48:08.689 -03:00 [INF] Content root path: C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\TechChallengeApi
+2025-05-29 19:48:09.470 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/index.html - null null
+2025-05-29 19:48:09.674 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/index.html - 200 null text/html;charset=utf-8 211.5551ms
+2025-05-29 19:48:09.698 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-29 19:48:09.706 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/_vs/browserLink - null null
+2025-05-29 19:48:09.716 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/_framework/aspnetcore-browser-refresh.js - 200 13768 application/javascript; charset=utf-8 17.3355ms
+2025-05-29 19:48:09.764 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/_vs/browserLink - 200 null text/javascript; charset=UTF-8 57.9984ms
+2025-05-29 19:48:10.013 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - null null
+2025-05-29 19:48:10.076 -03:00 [ERR] Unhandled exception for request GET /swagger/v1/swagger.json
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Ambiguous HTTP method for action - TechChallenge.Controllers.AccountController.Biblioteca (TechChallengeApi). Actions require an explicit HttpMethod binding for Swagger/OpenAPI 3.0
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at TechChallenge.Middleware.ErroMiddleware.InvokeAsync(HttpContext context) in C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\TechChallengeApi\Middleware\ErroMiddleware.cs:line 20
+2025-05-29 19:48:10.131 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - 500 null application/json 118.4264ms
+2025-05-29 19:50:09.034 -03:00 [INF] User profile is available. Using 'C:\Users\RayanPereiraDeLima\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-05-29 19:50:09.351 -03:00 [INF] Now listening on: https://localhost:7241
+2025-05-29 19:50:09.357 -03:00 [INF] Now listening on: http://localhost:5090
+2025-05-29 19:50:09.438 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-29 19:50:09.444 -03:00 [INF] Hosting environment: Development
+2025-05-29 19:50:09.446 -03:00 [INF] Content root path: C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\TechChallengeApi
+2025-05-29 19:50:10.047 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/index.html - null null
+2025-05-29 19:50:10.270 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/index.html - 200 null text/html;charset=utf-8 239.8488ms
+2025-05-29 19:50:10.309 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-29 19:50:10.314 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/_vs/browserLink - null null
+2025-05-29 19:50:10.338 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/_framework/aspnetcore-browser-refresh.js - 200 13768 application/javascript; charset=utf-8 28.3713ms
+2025-05-29 19:50:10.386 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/_vs/browserLink - 200 null text/javascript; charset=UTF-8 72.4076ms
+2025-05-29 19:50:10.525 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - null null
+2025-05-29 19:50:10.661 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 136.7846ms
+2025-05-29 20:20:02.586 -03:00 [INF] User profile is available. Using 'C:\Users\RayanPereiraDeLima\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-05-29 20:20:06.950 -03:00 [INF] Now listening on: https://localhost:7241
+2025-05-29 20:20:06.964 -03:00 [INF] Now listening on: http://localhost:5090
+2025-05-29 20:20:07.269 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-29 20:20:07.273 -03:00 [INF] Hosting environment: Development
+2025-05-29 20:20:07.277 -03:00 [INF] Content root path: C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\TechChallengeApi
+2025-05-29 20:20:09.714 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/index.html - null null
+2025-05-29 20:20:14.286 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/index.html - 200 null text/html;charset=utf-8 4577.9592ms
+2025-05-29 20:20:14.599 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-29 20:20:14.599 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/_vs/browserLink - null null
+2025-05-29 20:20:14.626 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/_framework/aspnetcore-browser-refresh.js - 200 13768 application/javascript; charset=utf-8 27.3941ms
+2025-05-29 20:20:14.935 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/_vs/browserLink - 200 null text/javascript; charset=UTF-8 338.6112ms
+2025-05-29 20:20:15.528 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - null null
+2025-05-29 20:20:17.278 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 1751.0938ms
+2025-05-29 20:20:39.573 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/api/Account - null null
+2025-05-29 20:20:39.790 -03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-05-29 20:20:39.807 -03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-05-29 20:20:39.815 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/api/Account - 401 0 null 243.2292ms
