@@ -12,8 +12,10 @@ O sistema FCG disponibiliza uma API REST em **.NET 8** para permitir que usuári
 - **Autenticação via JWT (JSON Web Token)**, garantindo segurança nas requisições subsequentes.
 - **Gestão de jogos** (CRUD) e **promoções** disponível apenas para administradores.
 - **Acesso diferenciado** entre usuários comuns (acesso à própria biblioteca de jogos) e administradores (poder de gerência completo).
-
+---
 ![image](https://github.com/user-attachments/assets/1da905d9-936e-4555-8951-ef1efcd6b55e)
+---
+
 
 ## Tecnologias Utilizadas
 
@@ -43,6 +45,9 @@ A API expõe os seguintes endpoints principais:
 
 - **POST `/api/Account/login`**: Autentica credenciais (e-mail/senha) e retorna o JWT para acesso às demais rotas.
 - **GET `/api/Account/biblioteca`**: Retorna a lista de jogos da biblioteca do usuário logado (requer token válido).
+- **GET `/api/Compra`**: Retorna a lista de compras da biblioteca do usuário logado (requer token válido).
+- **POST `/api/Compra`**: Realiza uma nova compra para a biblioteca do usuário logado.
+- **POST `/api/estorno/Compra`**: Realiza um estorno da compra realizada pelo usuário logado.      
 - **GET `/Jogo`**: Lista todos os jogos cadastrados.
 - **GET `/Jogo/{id}`**: Obtém detalhes de um jogo pelo seu ID.
 - **POST `/Jogo`**: Cadastra um novo jogo (admin).
@@ -103,7 +108,7 @@ Para executar o projeto localmente, siga estes passos:
 ### Autenticação e Swagger
 
 - Para autenticar, use o endpoint **`POST /api/Account/login`** informando e-mail/senha cadastrados. O servidor retornará um JWT (token) de autenticação.
-- Na interface do **Swagger UI** (`https://localhost:7241/swagger`), clique em **“Authorize”** e cole o token JWT (sem incluir a palavra `Bearer`) no campo de autorização. Conforme especificação OpenAPI, após este passo todas as requisições subsequentes incluirão automaticamente o cabeçalho `Authorization: Bearer <token>`.
+- Na interface do **Swagger UI** (`https://localhost:7241/swagger`), clique em **“Authorize”** e cole o token JWT (incluindo a palavra `Bearer`) no campo de autorização. Conforme especificação OpenAPI, após este passo todas as requisições subsequentes incluirão automaticamente o cabeçalho `Authorization: Bearer <token>`.
 - Em seguida, você pode testar todos os endpoints diretamente pelo Swagger: selecione um endpoint, clique em “Try it out” e veja as respostas da API.
 
 ## Testes
@@ -129,7 +134,7 @@ dotnet test
 
 ## Créditos
 
-- Emerson Coutinho
+- Emerson Coutinho 
 - Rodrigo Zanetta Slaski Suchorzewski
 - Rayan Pereira de Lima
 - Gabriel Costa Marques

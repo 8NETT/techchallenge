@@ -43,6 +43,7 @@ namespace FIAP.FCG.Application.Services
             var compra = Compra.New()
                 .CompradorId(usuario.Id)
                 .JogoId(jogo.Id)
+                .DataCriacao(DateTime.Now)
                 .Valor(jogo.Valor)
                 .Desconto(jogo.Desconto)
                 .Total(jogo.Valor * (1 - (Convert.ToDecimal(jogo.Desconto) / 100M)))
