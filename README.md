@@ -13,7 +13,7 @@ O sistema FCG disponibiliza uma API REST em **.NET 8** para permitir que usuári
 - **Gestão de jogos** (CRUD) e **promoções** disponível apenas para administradores.
 - **Acesso diferenciado** entre usuários comuns (acesso à própria biblioteca de jogos) e administradores (poder de gerência completo).
 ---
-![image](https://github.com/user-attachments/assets/1da905d9-936e-4555-8951-ef1efcd6b55e)
+![TC1 - FGC - Event Storming - Quadro 1](https://github.com/user-attachments/assets/88c63d3e-2864-4170-a2d2-3f0b2e5bbad9)
 ---
 
 
@@ -43,11 +43,11 @@ O projeto adota uma **arquitetura monolítica**, centralizando todos os componen
 
 A API expõe os seguintes endpoints principais:
 
-- **POST `/api/Account/login`**: Autentica credenciais (e-mail/senha) e retorna o JWT para acesso às demais rotas.
-- **GET `/api/Account/biblioteca`**: Retorna a lista de jogos da biblioteca do usuário logado (requer token válido).
+- **POST `/api/Conta/login`**: Autentica credenciais (e-mail/senha) e retorna o JWT para acesso às demais rotas.
+- **GET `/api/Conta/biblioteca`**: Retorna a lista de jogos da biblioteca do usuário logado (requer token válido).
 - **GET `/api/Compra`**: Retorna a lista de compras da biblioteca do usuário logado (requer token válido).
 - **POST `/api/Compra`**: Realiza uma nova compra para a biblioteca do usuário logado.
-- **POST `/api/estorno/Compra`**: Realiza um estorno da compra realizada pelo usuário logado.      
+- **POST `/api/estorno/Compra`**: Realiza um estorno da compra realizada pelo usuário logado (admin).      
 - **GET `/Jogo`**: Lista todos os jogos cadastrados.
 - **GET `/Jogo/{id}`**: Obtém detalhes de um jogo pelo seu ID.
 - **POST `/Jogo`**: Cadastra um novo jogo (admin).
