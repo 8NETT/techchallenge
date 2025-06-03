@@ -1,5 +1,6 @@
 using FIAP.FCG.WebApi.Configurations;
 using FIAP.FCG.WebApi.Middleware;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,11 @@ builder.AddInfrastructureConfiguration();
 builder.AddApplicationConfiguration();
 builder.AddAuthenticationConfiguration();
 builder.AddAuthorizationConfiguration();
+
+builder.Services.AddSwaggerGen(c =>
+{
+    c.EnableAnnotations();
+});
 
 var app = builder.Build();
 
