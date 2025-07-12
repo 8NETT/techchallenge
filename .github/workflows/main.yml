@@ -40,3 +40,24 @@ jobs:
           context: .
           push: true
           tags: rm360749/fiap-pos-techchallenge:latest
+
+  deploy-to-azure:
+      name: Deploy na Azure App Service
+      needs: build-test-and-publish
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: 1. Login na Azure
+          uses: azure/login@v1
+          with:
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+        - name: 2. Deploy no App Service
+          uses: azure/webapps-deploy@v2
+          with:
+            app-name: 'FiapTechChallenge'
+            images: 'docker.io/rm360749/fiap-pos-techchallenge:latest'
+
+        - name: 3. Logout da Azure
+          run: az logout
