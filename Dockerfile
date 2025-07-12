@@ -26,18 +26,22 @@ RUN dotnet publish "src/TechChallengeApi/WebApi.csproj" -c Release -o /app/publi
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 
-# Define as variáveis de ambiente para o agente New Relic
-ENV CORECLR_ENABLE_PROFILING=1 \
-    CORECLR_PROFILER={36032161-FFC0-4B61-B559-F6C5D41BAE5A} \
-    CORECLR_PROFILER_PATH=/usr/local/newrelic-netcore20-agent/libNewRelicProfiler.so \
-    NEW_RELIC_HOME=/usr/local/newrelic-netcore20-agent
+# Install the agent
+RUN apt-get update && apt-get install -y wget ca-certificates gnupg \
+&& echo 'deb http://apt.newrelic.com/debian/ newrelic non-free' | tee /etc/apt/sources.list.d/newrelic.list \
+&& wget https://download.newrelic.com/548C16BF.gpg \
+&& apt-key add 548C16BF.gpg \
+&& apt-get update \
+&& apt-get install -y 'newrelic-dotnet-agent' \
+&& rm -rf /var/lib/apt/lists/*
 
-# Baixa e extrai o agente do New Relic
-RUN apt-get update && apt-get install -y wget && \
-    wget -O /tmp/newrelic-agent.tar.gz "https://download.newrelic.com/dot_net_agent/latest_release/newrelic-dotnet-agent_amd64.tar.gz" && \
-    mkdir -p /usr/local/newrelic-netcore20-agent && \
-    tar -zxvf /tmp/newrelic-agent.tar.gz -C /usr/local/newrelic-netcore20-agent && \
-    rm /tmp/newrelic-agent.tar.gz
+# Enable the agent
+ENV CORECLR_ENABLE_PROFILING=1 \
+CORECLR_PROFILER={36032161-FFC0-4B61-B559-F6C5D41BAE5A} \
+CORECLR_NEWRELIC_HOME=/usr/local/newrelic-dotnet-agent \
+CORECLR_PROFILER_PATH=/usr/local/newrelic-dotnet-agent/libNewRelicProfiler.so \
+NEW_RELIC_LICENSE_KEY=719855735c16230f5209fcec9a2796f7FFFFNRAL \
+NEW_RELIC_APP_NAME="TechChallenge-API-Prod"
 
 WORKDIR /app
 COPY --from=build-env /app/publish .
