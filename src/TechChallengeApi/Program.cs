@@ -20,23 +20,23 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    try
-    {
-        var dbContext = services.GetRequiredService<ApplicationDbContext>();
+//using (var scope = app.Services.CreateScope())
+//{
+//    var services = scope.ServiceProvider;
+//    try
+//    {
+//        var dbContext = services.GetRequiredService<ApplicationDbContext>();
 
-        await dbContext.Database.MigrateAsync();
+//        await dbContext.Database.MigrateAsync();
 
-        Console.WriteLine("Migrations applied successfully.");
-    }
-    catch (Exception ex)
-    {
-        var logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "An error occurred while applying migrations.");
-    }
-}
+//        Console.WriteLine("Migrations applied successfully.");
+//    }
+//    catch (Exception ex)
+//    {
+//        var logger = services.GetRequiredService<ILogger<Program>>();
+//        logger.LogError(ex, "An error occurred while applying migrations.");
+//    }
+//}
 
 app.UseErrorLogging();
 
