@@ -25,6 +25,20 @@ RUN dotnet publish "src/TechChallengeApi/WebApi.csproj" -c Release -o /app/publi
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
+
+# Define as variáveis de ambiente para o agente New Relic
+ENV CORECLR_ENABLE_PROFILING=1 \
+    CORECLR_PROFILER={36032161-FFC0-4B61-B559-F6C5D41BAE5A} \
+    CORECLR_PROFILER_PATH=/usr/local/newrelic-netcore20-agent/libNewRelicProfiler.so \
+    NEW_RELIC_HOME=/usr/local/newrelic-netcore20-agent
+
+# Baixa e extrai o agente do New Relic
+RUN apt-get update && apt-get install -y wget && \
+    wget -O /tmp/newrelic-agent.tar.gz "https://download.newrelic.com/dot_net_agent/latest_net_core_agent_linux.tar.gz" && \
+    mkdir -p /usr/local/newrelic-netcore20-agent && \
+    tar -zxvf /tmp/newrelic-agent.tar.gz -C /usr/local/newrelic-netcore20-agent && \
+    rm /tmp/newrelic-agent.tar.gz
+
 WORKDIR /app
 COPY --from=build-env /app/publish .
 
