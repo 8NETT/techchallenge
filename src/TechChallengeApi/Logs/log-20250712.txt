@@ -1,0 +1,82 @@
+2025-07-12 14:07:36.334 -03:00 [WRN] No store type was specified for the decimal property 'Total' on entity type 'Compra'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-12 14:07:36.381 -03:00 [WRN] No store type was specified for the decimal property 'Valor' on entity type 'Compra'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-12 14:07:36.384 -03:00 [WRN] No store type was specified for the decimal property 'Valor' on entity type 'Jogo'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-12 14:07:37.096 -03:00 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-12 14:07:37.152 -03:00 [INF] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-07-12 14:07:37.163 -03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-12 14:07:37.178 -03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-07-12 14:07:37.233 -03:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-07-12 14:07:37.279 -03:00 [INF] No migrations were applied. The database is already up to date.
+2025-07-12 14:07:41.614 -03:00 [INF] User profile is available. Using 'C:\Users\RayanPereiraDeLima\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-12 14:07:42.058 -03:00 [INF] Now listening on: https://localhost:7241
+2025-07-12 14:07:42.060 -03:00 [INF] Now listening on: http://localhost:5090
+2025-07-12 14:07:42.216 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-12 14:07:42.220 -03:00 [INF] Hosting environment: Development
+2025-07-12 14:07:42.228 -03:00 [INF] Content root path: C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\src\TechChallengeApi
+2025-07-12 14:07:43.438 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger - null null
+2025-07-12 14:07:43.776 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger - 301 0 null 347.4437ms
+2025-07-12 14:07:43.784 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/index.html - null null
+2025-07-12 14:07:43.878 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/index.html - 200 null text/html;charset=utf-8 94.0458ms
+2025-07-12 14:07:43.904 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/swagger-ui.css - null null
+2025-07-12 14:07:43.908 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-12 14:07:43.908 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/swagger-ui-standalone-preset.js - null null
+2025-07-12 14:07:43.907 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/swagger-ui-bundle.js - null null
+2025-07-12 14:07:43.908 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/index.js - null null
+2025-07-12 14:07:43.905 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/index.css - null null
+2025-07-12 14:07:43.996 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/index.js - 200 null application/javascript;charset=utf-8 87.2568ms
+2025-07-12 14:07:44.005 -03:00 [INF] Sending file. Request path: '/index.css'. Physical path: 'N/A'
+2025-07-12 14:07:43.927 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/_vs/browserLink - null null
+2025-07-12 14:07:44.016 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/index.css - 200 202 text/css 111.491ms
+2025-07-12 14:07:44.029 -03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-07-12 14:07:44.029 -03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-07-12 14:07:44.060 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/swagger-ui-standalone-preset.js - 200 229223 text/javascript 151.8538ms
+2025-07-12 14:07:44.064 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/swagger-ui.css - 200 154949 text/css 159.3394ms
+2025-07-12 14:07:43.985 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript; charset=utf-8 71.7822ms
+2025-07-12 14:07:44.127 -03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-07-12 14:07:44.131 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/swagger-ui-bundle.js - 200 1484234 text/javascript 224.5496ms
+2025-07-12 14:07:44.499 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/_vs/browserLink - 200 null text/javascript; charset=UTF-8 571.5095ms
+2025-07-12 14:07:44.631 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - null null
+2025-07-12 14:07:44.661 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 30.1201ms
+2025-07-12 14:07:44.684 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/favicon-32x32.png - null null
+2025-07-12 14:07:44.691 -03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-07-12 14:07:44.695 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/favicon-32x32.png - 200 628 image/png 10.9843ms
+2025-07-12 14:26:43.183 -03:00 [WRN] No store type was specified for the decimal property 'Total' on entity type 'Compra'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-12 14:26:43.270 -03:00 [WRN] No store type was specified for the decimal property 'Valor' on entity type 'Compra'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-12 14:26:43.275 -03:00 [WRN] No store type was specified for the decimal property 'Valor' on entity type 'Jogo'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-07-12 14:26:44.021 -03:00 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-12 14:26:44.077 -03:00 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-07-12 14:26:44.085 -03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-12 14:26:44.093 -03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-07-12 14:26:44.124 -03:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-07-12 14:26:44.155 -03:00 [INF] No migrations were applied. The database is already up to date.
+2025-07-12 14:26:44.540 -03:00 [INF] User profile is available. Using 'C:\Users\RayanPereiraDeLima\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-12 14:26:44.940 -03:00 [INF] Now listening on: https://localhost:7241
+2025-07-12 14:26:44.942 -03:00 [INF] Now listening on: http://localhost:5090
+2025-07-12 14:26:45.030 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-12 14:26:45.035 -03:00 [INF] Hosting environment: Development
+2025-07-12 14:26:45.038 -03:00 [INF] Content root path: C:\Users\RayanPereiraDeLima\Documents\CURSOS\Pós\techchallenge\src\TechChallengeApi
+2025-07-12 14:26:45.959 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-12 14:26:45.959 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/_vs/browserLink - null null
+2025-07-12 14:26:46.020 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript; charset=utf-8 80.703ms
+2025-07-12 14:26:46.103 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/_vs/browserLink - 200 null text/javascript; charset=UTF-8 165.6558ms
+2025-07-12 14:26:46.167 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - null null
+2025-07-12 14:26:46.285 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 117.9754ms
+2025-07-12 14:27:09.874 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - null null
+2025-07-12 14:27:10.148 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 273.6214ms
+2025-07-12 14:27:10.328 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7241/favicon.ico - null null
+2025-07-12 14:27:10.555 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7241/favicon.ico - 404 0 null 228.4374ms
+2025-07-12 14:27:10.568 -03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7241/favicon.ico, Response status code: 404
