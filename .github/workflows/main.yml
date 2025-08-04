@@ -58,7 +58,7 @@ jobs:
         with:
           resourceGroup: 'TechChallengePlan-Free'
           containerAppName: 'techchallenge-app'
-          image: 'docker.io/rm360749/fiap-pos-techchallenge:latest'
+          imageToDeploy: 'docker.io/rm360749/fiap-pos-techchallenge:latest'
 
   deploy-to-azure:
       name: Deploy na Azure App Service
